@@ -8,13 +8,17 @@
 <style>
   html, body { margin: 0; background: #EEF0F3; }
   body { padding: 16px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px)); }
-  .pb { max-width: 1440px; margin: 0 auto; }
+  .pb { max-width: 1600px; margin: 0 auto; }
   .dash-skeleton { color: transparent !important; background: linear-gradient(90deg, #E6E9EE, #F2F4F7, #E6E9EE); border-radius: 4px; }
+  @media (min-width: 1100px) and (min-height: 600px) {
+    html, body { height: 100%; overflow: hidden; }
+    body { padding: 0; }
+    .pb { max-width: none; }
+  }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script>window.__HCCI_DATA = {"params": {"price": 45000, "reserve": 100, "scen": "seg", "yr": 5}, "datasets": {"assumptions": [{"cv": 2000, "staff": 10000000.0, "oh": 4000000.0, "capex": 70000000.0, "rate": 0.08, "life": 25, "share": 0.3, "q1": 200, "q5": 450, "ref": 50000, "cap": 600, "e": 0.8, "cay": 150, "cay_alt": 102000, "car_share": 0.3333333333333333, "us_alt": 80000, "car_alt": 80000, "travel": 4000, "proposal_price": 45000, "proposal_reserve": 100}], "drivers": [{"assumption": "Demand scenario", "range": "segment vs low-sensitivity", "group": "Demand", "price_low": 46500, "price_high": 57500, "price_base": 46500, "profit_low": 14730746, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 11000, "profit_swing": 602000}, {"assumption": "Capacity", "range": "450 to 800 CABGs", "group": "Capacity", "price_low": 46500, "price_high": 57000, "price_base": 46500, "profit_low": 8882746, "profit_high": 15553258, "profit_base": 15332746, "price_swing": 10500, "profit_swing": 6670513}, {"assumption": "Plan volume, year 5", "range": "350 to 550 cases", "group": "Demand", "price_low": 46500, "price_high": 53000, "price_base": 46500, "profit_low": 10463088, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 6500, "profit_swing": 4869658}, {"assumption": "Caymanian cases", "range": "80 to 200", "group": "Demand", "price_low": 46500, "price_high": 50000, "price_base": 46500, "profit_low": 15158173, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 3500, "profit_swing": 174573}, {"assumption": "Caribbean share of foreign patients", "range": "0% to 100%", "group": "Demand", "price_low": 46000, "price_high": 48500, "price_base": 46500, "profit_low": 15332746, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 2500, "profit_swing": 0}, {"assumption": "Travel cost for US patients", "range": "$2,000 to $6,000", "group": "Demand", "price_low": 46000, "price_high": 47500, "price_base": 46500, "profit_low": 15332746, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 1500, "profit_swing": 0}, {"assumption": "Reserved places", "range": "0 to 100", "group": "Mission", "price_low": 46500, "price_high": 46500, "price_base": 46500, "profit_low": 15332746, "profit_high": 15553258, "profit_base": 15332746, "price_swing": 0, "profit_swing": 220513}, {"assumption": "Variable cost per case", "range": "$1,500 to $3,000", "group": "Cost", "price_low": 46000, "price_high": 47000, "price_base": 46500, "profit_low": 14832746, "profit_high": 15582746, "profit_base": 15332746, "price_swing": 1000, "profit_swing": 750000}, {"assumption": "CABG share of fixed costs", "range": "20% to 50%", "group": "Cost", "price_low": 46500, "price_high": 46500, "price_base": 46500, "profit_low": 11221243, "profit_high": 17388497, "profit_base": 15332746, "price_swing": 0, "profit_swing": 6167254}, {"assumption": "Staff cost", "range": "$8M to $13M", "group": "Cost", "price_low": 46500, "price_high": 46500, "price_base": 46500, "profit_low": 14432746, "profit_high": 15932746, "profit_base": 15332746, "price_swing": 0, "profit_swing": 1500000}, {"assumption": "Overhead", "range": "$3M to $5M", "group": "Cost", "price_low": 46500, "price_high": 46500, "price_base": 46500, "profit_low": 15032746, "profit_high": 15632746, "profit_base": 15332746, "price_swing": 0, "profit_swing": 600000}], "ledger": [{"assumption": "Plan volume", "value": "about 200 (yr 1), 450 (yr 5)", "case_gives": "Plan estimate at around $50,000", "where": "p. 10", "we_added": "Linear ramp between year 1 and year 5", "confidence": "Medium"}, {"assumption": "Caymanian demand", "value": "about 150 cases, capped", "case_gives": "$14.5M spent on US cardiothoracic surgery in 2008; 400 heart patients sent abroad", "where": "p. 6", "we_added": "Spending divided by $80,000-102,000 per case; not a count of CABGs", "confidence": "Low"}, {"assumption": "Foreign insured demand", "value": "200 US, 100 Caribbean", "case_gives": "Talks with US and Caribbean insurers; no volumes", "where": "p. 10", "we_added": "Residual of the plan (450 - 150); one-third Caribbean share", "confidence": "Low"}, {"assumption": "Price at which each group stops coming", "value": "$102k Caymanians, $76k US, $80k Caribbean", "case_gives": "Miami all-in $102,000; US commercial rate $80,000", "where": "p. 6, Exh. 6", "we_added": "$4,000 travel for US patients; Caribbean rate set equal to US", "confidence": "Medium"}, {"assumption": "Shape of demand", "value": "straight line to the stop price", "case_gives": "One demand point only", "where": "p. 10", "we_added": "Linear form, tested against an elasticity-0.8 scenario", "confidence": "Medium"}, {"assumption": "Variable cost", "value": "$2,000 per case", "case_gives": "NH consumables $570; HCCI supplies cost 2x India", "where": "Exh. 3, p. 9", "we_added": "$400-800 for food, laundry and cleaning", "confidence": "Medium"}, {"assumption": "Fixed costs", "value": "$20.6M a year", "case_gives": "$70M investment; 140 staff; salary ratios", "where": "pp. 2, 6, 9", "we_added": "Salary levels, overhead, 8% over 25 years", "confidence": "Medium-low"}, {"assumption": "CABG share of fixed costs", "value": "30%", "case_gives": "Services offered; NH CABG mix 48%", "where": "pp. 3, 9", "we_added": "The allocation itself", "confidence": "Low"}, {"assumption": "Capacity", "value": "about 600 CABGs a year", "case_gives": "At most 4 cardiac surgeries a day", "where": "p. 9", "we_added": "300 operating days; NH's 48% CABG mix", "confidence": "Medium"}, {"assumption": "Reserved places", "value": "100 a year", "case_gives": "Mission statement; NH: 37% of patients below break-even", "where": "pp. 1, 3", "we_added": "The number, and the rule that reserved places come before paying patients", "confidence": "Policy choice"}], "triggers": [{"signal": "Paying patients in year 1", "test": "below", "threshold": 144, "unit": "patients", "action": "Review costs and referral channels before cutting the price"}, {"signal": "Insurer contracts signed by JCI accreditation (2015)", "test": "equal to", "threshold": 0, "unit": "contracts", "action": "Focus on Caymanian and Caribbean referrals; consider a basic package"}, {"signal": "Paying patients on a waiting list", "test": "above", "threshold": 25, "unit": "for 6 months", "action": "Raise the price for new contracts or bring the expansion forward"}, {"signal": "Average variable cost per case", "test": "above", "threshold": 3000, "unit": "dollars", "action": "Narrow what the package covers"}, {"signal": "Caribbean patients moving away from Ascension", "test": "any", "threshold": null, "unit": "", "action": "Agree a referral arrangement with Ascension"}]}};</script>
-<script>
-(function () {
+<script>(function () {
   // Minimal runtime replacing the claude.ai dashboard host: datasets, calcs, drawings and parameters.
   const D = window.__HCCI_DATA;
   let params = Object.assign({}, D.params), cache = {}, raf = null;
@@ -37,7 +41,8 @@
       try { draws[name](el); } catch (e) { console.error(e); }
     }));
   };
-  const schedule = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = null; render(); }); };
+  // Ridisegna al frame successivo; il timeout copre le schede in background, dove i frame sono sospesi.
+  const schedule = () => { if (raf) return; const run = () => { if (!raf) return; raf = null; render(); }; raf = requestAnimationFrame(run) || 1; setTimeout(run, 100); };
   window.dash = {
     calc: (id, o) => { calcs[id] = o; },
     data,
@@ -273,10 +278,79 @@
 @media (prefers-reduced-motion: reduce) {
   .pb *, .pb *::before, .pb *::after { transition-duration: 1ms !important; animation: none !important; }
 }
+
+/* ---------- Layout a schede, a schermo intero ---------- */
+[hidden] { display: none !important; }
+.pb-chart svg { display: block; }
+.pb-main { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+.pb-pages, .pb-page { display: grid; gap: 10px; min-width: 0; }
+.pb-row2 { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+.pb-method { max-width: none; }
+.pb-tabs { order: 0; }
+@media (min-width: 900px) {
+  .pb-main { grid-template-columns: 250px minmax(0, 1fr); align-items: start; }
+  .pb-row2 { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+  .pb-row-even { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+  .pb-row-mission { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+  .pb-row-ledger { grid-template-columns: minmax(0, 2.7fr) minmax(0, 1fr); }
+}
+/* Schermi da laptop in su: tutto sta nella finestra, nessuno scroll di pagina */
+@media (min-width: 1100px) and (min-height: 600px) {
+  .pb-app { box-sizing: border-box; height: 100vh; border-radius: 0; grid-template-rows: auto auto minmax(0, 1fr); gap: 8px; padding: 10px 12px; overflow: hidden; }
+  .pb-app .pb-top h1 { font-size: 19px; }
+  .pb-app .pb-top p { margin-top: 1px; font-size: 12px; }
+  .pb-main { min-height: 0; height: 100%; align-items: stretch; }
+  .pb-side { min-height: 0; display: flex; }
+  .pb-side > .pb-panel { flex: 1; }
+  .pb-pages { min-height: 0; height: 100%; }
+  .pb-page { min-height: 0; height: 100%; gap: 8px; }
+  .pb-p-overview { grid-template-rows: auto auto minmax(0, 1fr); }
+  .pb-p-comparison { grid-template-rows: auto minmax(0, 1fr); }
+  .pb-p-single { grid-template-rows: minmax(0, 1fr); }
+  .pb-row2 { min-height: 0; height: 100%; gap: 8px; }
+  .pb-panel { min-height: 0; overflow: hidden; }
+  .pb-panel > h2 { padding: 6px 10px; font-size: 13px; }
+  .pb-body { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding: 8px 10px; }
+  .pb-chart, .pb-chart.sm, .pb-chart.tall { flex: 1 1 0; min-height: 0 !important; overflow: hidden; }
+  .pb-kpis { gap: 8px; }
+  .pb-kpi { padding: 7px 10px 8px; gap: 2px; }
+  .pb-kpi h3 { font-size: 11.5px; }
+  .pb-kpi .k-val { font-size: 21px; }
+  .pb-vbody { padding: 7px 12px 8px; gap: 3px; }
+  .pb-verdict p { font-size: 12.5px; line-height: 1.4; }
+  .pb-table { font-size: 12px; }
+  .pb-table th { white-space: normal; padding: 5px 7px; font-size: 11px; vertical-align: bottom; }
+  .pb-table td { padding: 5px 7px; }
+  .pb-table.text td { font-size: 11.5px; line-height: 1.32; padding: 5px 7px; }
+  .pb-lever { gap: 2px; }
+  .pb-body .pb-btns { gap: 5px; }
+  .pb-tab { min-height: 38px; padding: 0 16px; }
+}
+/* Finestre basse (portatili da 13", browser con molte barre): versione compatta */
+@media (min-width: 1100px) and (min-height: 600px) and (max-height: 720px) {
+  .pb-app { padding: 6px 10px; gap: 6px; }
+  .pb-app .pb-top h1 { font-size: 17px; }
+  .pb-app .pb-top p { display: none; }
+  .pb-tab { min-height: 34px; }
+  .pb-page, .pb-row2 { gap: 6px; }
+  .pb-kpi { padding: 5px 9px 6px; }
+  .pb-kpi h3 { min-height: 0; -webkit-line-clamp: 1; }
+  .pb-kpi .k-val { font-size: 19px; }
+  .pb-kpi .k-prop, .pb-kpi .k-delta { font-size: 11px; }
+  .pb-vbody { padding: 5px 10px 6px; }
+  .pb-verdict p { font-size: 12px; line-height: 1.35; }
+  .pb-panel > h2 { padding: 5px 10px; font-size: 12.5px; }
+  .pb-body { padding: 6px 9px; gap: 6px; }
+  .pb-table { font-size: 11.5px; }
+  .pb-table th { padding: 4px 6px; }
+  .pb-table td { padding: 3px 6px; }
+  .pb-table.text td { font-size: 11px; line-height: 1.28; padding: 3px 6px; }
+  .pb-note { font-size: 11px; }
+  .pb-lever .l-state { min-height: 1.2em; }
+}
 </style>
 
-<div class="pb" lang="en">
-
+<div class="pb pb-app" lang="en">
   <header class="pb-top" id="header">
     <div>
       <h1>HCCI CABG pricing · recommended price $45,000</h1>
@@ -287,10 +361,33 @@
       <div class="pb-slicer pb-dd" data-dd="yr"><span class="pb-dd-label" id="pb-dd-yr-lbl">Year</span><button type="button" class="pb-dd-btn" id="pb-dd-yr-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="pb-dd-yr-list" aria-labelledby="pb-dd-yr-lbl pb-dd-yr-btn"><span class="pb-dd-val"><span class="pb-dd-ghost" data-dd-label="5">Year 5</span><span class="pb-dd-ghost" data-dd-label="1">Year 1</span></span><svg class="pb-dd-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><ul class="pb-dd-list" id="pb-dd-yr-list" role="listbox" aria-labelledby="pb-dd-yr-lbl"><li role="option" id="pb-dd-yr-5" data-val="5" tabindex="-1" aria-selected="false"><span>Year 5</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li><li role="option" id="pb-dd-yr-1" data-val="1" tabindex="-1" aria-selected="false"><span>Year 1</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li></ul></div>
     </div>
   </header>
-
-  <section class="pb-page" id="overview">
-
-    <div class="pb-kpis">
+  <nav class="pb-tabs" role="tablist" aria-label="Report pages"><button type="button" class="pb-tab" role="tab" aria-selected="true" aria-controls="overview" data-text="Overview" data-tab="overview"><span class="tab-label">Overview</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="comparison" data-text="Comparison" data-tab="comparison"><span class="tab-label">Comparison</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="drivers" data-text="Price drivers" data-tab="drivers"><span class="tab-label">Price drivers</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="mission" data-text="Mission and risks" data-tab="mission"><span class="tab-label">Mission and risks</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="assumptions" data-text="Assumptions" data-tab="assumptions"><span class="tab-label">Assumptions</span></button></nav>
+  <div class="pb-main">
+    <aside class="pb-side"><div class="pb-panel" id="levers">
+        <h2>Pricing levers</h2>
+        <div class="pb-body">
+          <div class="pb-lever" id="lever-price" data-lever="price">
+            <div class="l-row"><span class="l-name">CABG price</span><span class="l-val" data-draw="lval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</span></div>
+            <div class="pb-track"><input type="range" id="pb-price" min="30000" max="70000" step="500" value="45000" aria-label="CABG price"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div>
+            <div class="l-state"><span class="l-on" data-on="price">◆ Recommended</span><span class="l-off" data-off="price" hidden="">Changed · recommendation at ◆</span></div>
+          </div>
+          <div class="pb-lever" id="lever-reserve" data-lever="reserve">
+            <div class="l-row"><span class="l-name">Places reserved for patients who cannot pay</span><span class="l-val" data-draw="lval" data-metric="reserved" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=reserved">—</span></div>
+            <div class="pb-track"><input type="range" id="pb-reserve" min="0" max="150" step="10" value="100" aria-label="Reserved places"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div>
+            <div class="l-state"><span class="l-on" data-on="reserve">◆ Recommended</span><span class="l-off" data-off="reserve" hidden="">Changed · recommendation at ◆</span></div>
+          </div>
+          <div class="pb-btns" role="group" aria-label="Quick comparisons">
+            <button type="button" class="pb-btn gold" aria-pressed="true" data-preset="45000">Recommended</button>
+            <button type="button" class="pb-btn" data-preset="50000">Plan $50k</button>
+            <button type="button" class="pb-btn" data-preset="50500">Worst-case $50.5k</button>
+            <button type="button" class="pb-btn" data-preset="57500">High $57.5k</button>
+            <button type="button" class="pb-btn" data-preset="40000">Low $40k</button>
+          </div>
+          <p class="pb-note">Capacity ≈ 600 CABGs a year (4 cardiac surgeries a day, p. 9). Reserved places are filled first.</p>
+        </div>
+      </div></aside>
+    <div class="pb-pages">
+      <section class="pb-page pb-p-overview" id="overview" role="tabpanel"><div class="pb-kpis">
       <article class="pb-kpi" id="kpi-price" data-kcard="price">
         <div class="k-head"><h3 title="CABG list price">CABG list price</h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"></path><circle cx="7.5" cy="8.5" r="1.5"></circle></svg></div>
         <div class="k-val dash-skeleton" data-draw="kval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</div>
@@ -327,9 +424,7 @@
         <div class="k-prop"><i></i>Recommended <span data-draw="kprop" data-metric="save_us" data-fmt="usd" data-source="kpis" data-field="proposal" data-where="metric=save_us">—</span></div>
         <div class="k-delta" data-draw="kdelta" data-metric="save_us" data-fmt="usd" data-good="up" data-source="kpis" data-field="delta" data-where="metric=save_us">—</div>
       </article>
-    </div>
-
-    <div class="pb-panel pb-verdict" id="verdict">
+    </div><div class="pb-panel pb-verdict" id="verdict">
       <h2>Why $45,000</h2>
       <div class="pb-body pb-vbody">
       <p class="v-title" data-v="same">Recommended configuration</p>
@@ -341,34 +436,7 @@
       <p data-v="resless" hidden="">Fewer reserved places: year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>, places for patients who cannot pay <b data-draw="vnum" data-metric="places_poor" data-col="delta" data-fmt="sint" data-source="kpis" data-field="delta" data-where="metric=places_poor">—</b>.</p>
       <p data-v="resmore" hidden="">More reserved places: <b data-draw="vnum" data-metric="turned_away" data-col="selection" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=turned_away">—</b> paying patients turned away, year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>.</p>
       </div>
-    </div>
-
-    <div class="pb-grid">
-      <div class="pb-panel" id="levers">
-        <h2>Pricing levers</h2>
-        <div class="pb-body">
-          <div class="pb-lever" id="lever-price" data-lever="price">
-            <div class="l-row"><span class="l-name">CABG price</span><span class="l-val" data-draw="lval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</span></div>
-            <div class="pb-track"><input type="range" id="pb-price" min="30000" max="70000" step="500" value="45000" aria-label="CABG price"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div>
-            <div class="l-state"><span class="l-on" data-on="price">◆ Recommended</span><span class="l-off" data-off="price" hidden="">Changed · recommendation at ◆</span></div>
-          </div>
-          <div class="pb-lever" id="lever-reserve" data-lever="reserve">
-            <div class="l-row"><span class="l-name">Places reserved for patients who cannot pay</span><span class="l-val" data-draw="lval" data-metric="reserved" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=reserved">—</span></div>
-            <div class="pb-track"><input type="range" id="pb-reserve" min="0" max="150" step="10" value="100" aria-label="Reserved places"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div>
-            <div class="l-state"><span class="l-on" data-on="reserve">◆ Recommended</span><span class="l-off" data-off="reserve" hidden="">Changed · recommendation at ◆</span></div>
-          </div>
-          <div class="pb-btns" role="group" aria-label="Quick comparisons">
-            <button type="button" class="pb-btn gold" aria-pressed="true" data-preset="45000">Recommended</button>
-            <button type="button" class="pb-btn" data-preset="50000">Plan $50k</button>
-            <button type="button" class="pb-btn" data-preset="50500">Worst-case $50.5k</button>
-            <button type="button" class="pb-btn" data-preset="57500">High $57.5k</button>
-            <button type="button" class="pb-btn" data-preset="40000">Low $40k</button>
-          </div>
-          <p class="pb-note">Capacity ≈ 600 CABGs a year (4 cardiac surgeries a day, p. 9). Reserved places are filled first.</p>
-        </div>
-      </div>
-
-      <div class="pb-panel" id="panel-curve">
+    </div><div class="pb-row2"><div class="pb-panel" id="panel-curve">
         <h2>Year-5 CABG profit at each price</h2>
         <div class="pb-body">
           <ul class="pb-legend">
@@ -379,9 +447,7 @@
           </ul>
           <div class="pb-chart" data-draw="curve" data-source="curve peaks kpis" role="img" aria-label="Year-5 CABG profit by price in both demand scenarios, with the recommended and selected prices marked"></div>
         </div>
-      </div>
-
-      <div class="pb-panel" id="panel-bridge">
+      </div><div class="pb-panel" id="panel-bridge">
         <h2>From revenue to profit</h2>
         <div class="pb-body">
           <ul class="pb-legend">
@@ -391,50 +457,26 @@
           <div class="pb-chart sm" data-draw="bridge" data-source="kpis" role="img" aria-label="Revenue, variable cost, allocated fixed cost and profit for the selection, with the recommended values marked"></div>
           <p class="pb-note">Selected year and scenario. Subsidized patients pay the variable cost: no margin.</p>
         </div>
-      </div>
-    </div>
-
-    <div class="pb-grid2">
-      <div class="pb-panel" id="panel-compare">
+      </div></div></section>
+      <section class="pb-page pb-p-comparison" id="comparison" role="tabpanel" hidden><div class="pb-panel" id="panel-compare">
         <h2>Scenario comparison</h2>
-        <div class="pb-body pb-tw">
+        <div class="pb-body">
           <table class="pb-table" id="table-compare" data-source="compare" data-row-key="name">
             <thead><tr><th data-field="name">Option</th><th data-field="price">Price</th><th data-field="paying">Paying yr 5</th><th data-field="places_poor">Places, cannot pay</th><th data-field="profit_y1">Profit yr 1</th><th data-field="profit_seg">Profit yr 5, segment</th><th data-field="profit_low">Profit yr 5, low-sens.</th><th data-field="shortfall">Worst-case gap</th></tr></thead>
             <tbody data-draw="compare"></tbody>
           </table>
           <p class="pb-note">▲ ▼ against the recommendation. Paying patients and places: selected scenario.</p>
         </div>
-      </div>
-      <div class="pb-panel" id="panel-heat">
+      </div><div class="pb-row2 pb-row-even"><div class="pb-panel" id="panel-heat">
         <h2>Profit sensitivity, year 5 ($M)</h2>
-        <div class="pb-body pb-tw">
+        <div class="pb-body">
           <table class="pb-table pb-heat" id="table-heat" data-source="heat">
             <thead><tr><th>Price</th><th>350</th><th>400</th><th class="h-plan">450 plan</th><th>500</th><th>550</th></tr></thead>
             <tbody data-draw="heat"></tbody>
           </table>
           <p class="pb-note">Columns: year-5 plan volume at $50,000. Gold outline: recommendation.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pb-page" id="drivers" hidden="">
-    <div class="pb-panel">
-      <h2>What moves the price, and what only moves the profit</h2>
-      <div class="pb-body">
-        <p class="pb-note">Range of results with one assumption at its limits, the others at base. Costs move profit, not price. Demand and capacity move price.</p>
-        <ul class="pb-legend">
-          <li><i data-sw="navy"></i>Profit-maximizing price, segment demand ($k)</li>
-          <li><i data-sw="teal"></i>Year-5 CABG profit at $45,000 ($M)</li>
-        </ul>
-        <div class="pb-chart" style="min-height:420px" data-draw="drivers" data-source="drivers" role="img" aria-label="For each assumption, the range of the best price and of year-5 profit"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pb-page" id="mission" hidden="">
-    <div class="pb-grid2">
-      <div class="pb-panel">
+      </div><div class="pb-panel">
         <h2>Who uses the 600 places in year 5</h2>
         <div class="pb-body">
           <ul class="pb-legend">
@@ -445,8 +487,19 @@
           <div class="pb-chart sm" data-draw="places" data-source="compare" role="img" aria-label="Use of the 600 yearly places for each option"></div>
           <p class="pb-note">Above 500 paying patients, extra demand is turned away.</p>
         </div>
+      </div></div></section>
+      <section class="pb-page pb-p-single" id="drivers" role="tabpanel" hidden><div class="pb-panel">
+      <h2>What moves the price, and what only moves the profit</h2>
+      <div class="pb-body">
+        <p class="pb-note">Range of results with one assumption at its limits, the others at base. Costs move profit, not price. Demand and capacity move price.</p>
+        <ul class="pb-legend">
+          <li><i data-sw="navy"></i>Profit-maximizing price, segment demand ($k)</li>
+          <li><i data-sw="teal"></i>Year-5 CABG profit at $45,000 ($M)</li>
+        </ul>
+        <div class="pb-chart" style="min-height:420px" data-draw="drivers" data-source="drivers" role="img" aria-label="For each assumption, the range of the best price and of year-5 profit"></div>
       </div>
-      <div class="pb-panel">
+    </div></section>
+      <section class="pb-page pb-p-single" id="mission" role="tabpanel" hidden><div class="pb-row2 pb-row-mission"><div class="pb-panel">
         <h2>Trade-offs</h2>
         <div class="pb-body">
           <ul class="pb-list">
@@ -457,42 +510,26 @@
             <li><b>Package risk.</b> Complication costs stay with HCCI.</li>
           </ul>
         </div>
-      </div>
-    </div>
-    <div class="pb-panel">
+      </div><div class="pb-panel">
       <h2>Signals to reconsider the price</h2>
-      <div class="pb-body pb-tw">
+      <div class="pb-body">
         <table class="pb-table text" id="table-triggers" data-source="triggers" data-row-key="signal">
           <thead><tr><th data-field="signal">Signal</th><th data-field="threshold">Threshold</th><th data-field="action">Response</th></tr></thead>
           <tbody data-draw="triggers"></tbody>
         </table>
       </div>
-    </div>
-  </section>
-
-  <section class="pb-page" id="assumptions" hidden="">
-    <div class="pb-panel">
+    </div></div></section>
+      <section class="pb-page pb-p-single" id="assumptions" role="tabpanel" hidden><div class="pb-row2 pb-row-ledger"><div class="pb-panel">
       <h2>Assumptions and sources</h2>
-      <div class="pb-body pb-tw">
+      <div class="pb-body">
         <table class="pb-table text" id="table-ledger" data-source="ledger" data-row-key="assumption">
           <thead><tr><th data-field="assumption">Assumption</th><th data-field="value">Value</th><th data-field="case_gives">Case evidence</th><th data-field="where">Page</th><th data-field="we_added">Added assumption</th></tr></thead>
           <tbody data-draw="ledger"></tbody>
         </table>
       </div>
+    </div><div class="pb-panel" id="method"><h2>Method</h2><div class="pb-body"><p class="pb-note pb-method">CABG profit = (price − $2,000) × paying patients − 30% of fixed costs ($10M staff, $4M overhead, $6.56M capital: $70M at 8% over 25 years). Paying patients = demand, up to 600 places minus reserved places. Demand calibrated on the plan: about 200 cases (year 1) and 450 (year 5) at around $50,000 (p. 10). Segment scenario: 150 Caymanian, 200 US, 100 Caribbean insured patients, falling linearly to zero at $102,000, $76,000 and $80,000. Low-sensitivity scenario: elasticity 0.8 at $50,000. Values recomputed in the browser with the formulas of the Python model in Sources. 2014 dollars.</p></div></div></div></section>
     </div>
-    <details class="pb-foot" id="method">
-      <summary>Method<span class="pb-acc-hint">Formulas and data</span></summary>
-      <p>CABG profit = (price − $2,000) × paying patients − 30% of fixed costs ($10M staff, $4M overhead, $6.56M capital: $70M at 8% over 25 years). Paying patients = demand, up to 600 places minus reserved places. Demand calibrated on the plan: about 200 cases (year 1) and 450 (year 5) at around $50,000 (p. 10). Segment scenario: 150 Caymanian, 200 US, 100 Caribbean insured patients, falling linearly to zero at $102,000, $76,000 and $80,000. Low-sensitivity scenario: elasticity 0.8 at $50,000. Values recomputed in the browser with the formulas of the Python model in Sources. 2014 dollars.</p>
-    </details>
-  </section>
-
-  <nav class="pb-tabs" role="tablist" aria-label="Report pages">
-    <button type="button" class="pb-tab" role="tab" aria-selected="true" aria-controls="overview" data-text="Overview" data-tab="overview"><span class="tab-label">Overview</span></button>
-    <button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="drivers" data-text="Price drivers" data-tab="drivers"><span class="tab-label">Price drivers</span></button>
-    <button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="mission" data-text="Mission and risks" data-tab="mission"><span class="tab-label">Mission and risks</span></button>
-    <button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="assumptions" data-text="Assumptions" data-tab="assumptions"><span class="tab-label">Assumptions</span></button>
-  </nav>
-
+  </div>
 </div>
 
 <script>
@@ -652,7 +689,7 @@ document.querySelectorAll('[data-tab]').forEach((t) => t.addEventListener('click
   dash.setLink(t.dataset.tab);
 }));
 const pbHash = (location.hash || '').slice(1);
-if (['drivers', 'mission', 'assumptions'].includes(pbHash)) document.querySelectorAll(`[data-tab="${pbHash}"]`).forEach((t) => t.click());
+if (['comparison', 'drivers', 'mission', 'assumptions'].includes(pbHash)) document.querySelectorAll(`[data-tab="${pbHash}"]`).forEach((t) => t.click());
 
 dash.onData(() => {
   const C = window.PB.C, prm = dash.params();
@@ -732,7 +769,7 @@ dash.draw('curve', (el) => {
   const prm = dash.params(), scen = prm.scen === 'low' ? 'low' : 'seg';
   const pr = window.PB.row('kpis', 'price'), prop = pr ? pr.proposal : 45000, sel = pr ? pr.selection : 45000;
   const rows = c.data.map((r) => ({ p: +r.price, s: +r.profit_seg, l: +r.profit_low, n: +r.paying }));
-  const W = Math.max(280, el.clientWidth || 600), H = 290, m = { t: 34, r: 14, b: 32, l: 52 };
+  const W = Math.max(280, el.clientWidth || 600), H = Math.max(120, Math.min(520, el.clientHeight || 290)), m = { t: 34, r: 14, b: 32, l: 52 };
   const x = d3.scaleLinear().domain(d3.extent(rows, (r) => r.p)).range([m.l, W - m.r]);
   const y = d3.scaleLinear().domain([Math.min(0, d3.min(rows, (r) => Math.min(r.s, r.l))), d3.max(rows, (r) => Math.max(r.s, r.l)) * 1.08]).nice().range([H - m.b, m.t]);
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Year-5 profit by price');
@@ -790,7 +827,7 @@ dash.draw('bridge', (el) => {
     { lab: 'Fixed cost (30%)', a: rev.selection - vc.selection - fx.selection, b: rev.selection - vc.selection, pa: pf.proposal, pb: rev.proposal - vc.proposal, col: C.bad },
     { lab: 'Profit', a: 0, b: pf.selection, pa: 0, pb: pf.proposal, col: C.teal },
   ];
-  const W = Math.max(240, el.clientWidth || 360), H = 260, m = { t: 22, r: 8, b: 30, l: 44 };
+  const W = Math.max(240, el.clientWidth || 360), H = Math.max(120, Math.min(480, el.clientHeight || 260)), m = { t: 22, r: 8, b: 30, l: 44 };
   const x = d3.scaleBand().domain(steps.map((s) => s.lab)).range([m.l, W - m.r]).padding(0.3);
   const y = d3.scaleLinear().domain([Math.min(0, d3.min(steps, (s) => Math.min(s.a, s.b))), d3.max(steps, (s) => Math.max(s.b, s.pb)) * 1.12]).nice().range([H - m.b, m.t]);
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Revenue to profit bridge');
@@ -868,7 +905,7 @@ dash.draw('drivers', (el) => {
   el.replaceChildren();
   const rows = d.data.map((r) => ({ name: r.assumption, rng: r.range, pl: +r.price_low, ph: +r.price_high, pb: +r.price_base, fl: +r.profit_low, fh: +r.profit_high, fb: +r.profit_base }))
     .sort((a, b) => (b.ph - b.pl) - (a.ph - a.pl) || (b.fh - b.fl) - (a.fh - a.fl));
-  const W = Math.max(300, el.clientWidth || 700), narrow = W < 680, rowH = narrow ? 64 : 32, labW = narrow ? 0 : Math.min(300, W * 0.32), top = 24;
+  const W = Math.max(300, el.clientWidth || 700), narrow = W < 680, top = 24, avail = el.clientHeight || 0, rowH = narrow ? 64 : (avail > 0 ? Math.max(20, Math.min(34, (avail - top - 10) / rows.length)) : 32), labW = narrow ? 0 : Math.min(300, W * 0.32);
   const panelW = narrow ? W - 16 : (W - labW - 36) / 2, H = top + rows.length * rowH + 10;
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Effect of each assumption on price and profit');
   const xp = d3.scaleLinear().domain([d3.min(rows, (r) => r.pl) - 1000, d3.max(rows, (r) => r.ph) + 1000]).range([0, panelW - 56]);
@@ -893,7 +930,7 @@ dash.draw('places', (el) => {
   const d = dash.data('compare'), C = window.PB.C;
   if (d.status !== 'ok' || !d.data || !d.data.length) { el.replaceChildren(); el.textContent = '—'; return; }
   el.replaceChildren();
-  const rows = d.data, W = Math.max(280, el.clientWidth || 600), narrow = W < 520, labW = narrow ? 110 : 190, rowH = 34;
+  const rows = d.data, W = Math.max(280, el.clientWidth || 600), narrow = W < 520, labW = narrow ? 110 : 190, avail = el.clientHeight || 0, rowH = avail > 0 ? Math.max(20, Math.min(34, (avail - 34) / rows.length)) : 34;
   const H = 8 + rows.length * rowH + 24;
   const x = d3.scaleLinear().domain([0, 600]).range([labW, W - (narrow ? 50 : 110)]);
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Use of places by option');
