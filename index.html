@@ -310,6 +310,14 @@
 .pb-sl .l-val { font-size: 12px; min-width: 7ch; }
 .pb-sl-btns { flex: none; }
 .pb-sl-btns .pb-btn { min-height: 28px; padding: 0 8px; }
+.pb-panel.pb-verdict > .pb-vbody { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 24px; align-items: center; }
+.pb-vtext { display: grid; gap: 4px; min-width: 0; }
+.pb-reco { display: flex; align-items: center; gap: 12px; padding-right: 24px; border-right: 1px solid var(--pb-line); }
+.pb-dia-lg { width: 14px; height: 14px; flex: none; }
+.pb-reco-main { display: grid; gap: 2px; }
+.pb-reco-val { font-size: 32px; line-height: 1.1; font-weight: 600; color: var(--pb-ink); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.pb-reco-note { font-size: 12px; line-height: 1.35; color: var(--pb-gold-ink); max-width: 26ch; }
+@media (max-width: 899px) { .pb-panel.pb-verdict > .pb-vbody { grid-template-columns: minmax(0, 1fr); row-gap: 8px; } .pb-reco { border-right: 0; padding-right: 0; } }
 .pb-heat th { text-align: center; }
 .pb-heat th:first-child { text-align: left; }
 .pb-def { margin: 0; display: grid; gap: 12px; align-content: start; }
@@ -376,6 +384,8 @@
   .pb-def { gap: 8px; } .pb-def > div { padding-bottom: 8px; } .pb-def dd { font-size: 11px; }
   .pb-note { font-size: 11px; }
   .pb-tab { min-height: 32px; }
+  .pb-reco-val { font-size: 26px; }
+  .pb-reco-note { font-size: 11px; }
   .pb-lever-body .pb-note { display: none; }
   .pb-lever-body .pb-btn { min-height: 28px; }
   .pb-lever .l-state { min-height: 0; }
@@ -385,7 +395,7 @@
 
 <div class="pb pb-app" lang="en">
   <header class="pb-top" id="header">
-    <div class="pb-brand"><h1>HCCI CABG pricing</h1><span class="pb-sub"><i class="pb-dia" aria-hidden="true"></i>Recommended price $45,000</span></div>
+    <div class="pb-brand"><h1>HCCI CABG pricing</h1></div>
     <nav class="pb-tabs" role="tablist" aria-label="Report pages"><button type="button" class="pb-tab" role="tab" aria-selected="true" aria-controls="overview" data-text="Overview" data-tab="overview"><span class="tab-label">Overview</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="comparison" data-text="Comparison" data-tab="comparison"><span class="tab-label">Comparison</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="drivers" data-text="Price drivers" data-tab="drivers"><span class="tab-label">Price drivers</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="mission" data-text="Mission and risks" data-tab="mission"><span class="tab-label">Mission and risks</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="assumptions" data-text="Assumptions" data-tab="assumptions"><span class="tab-label">Assumptions</span></button></nav>
     <div class="pb-slicers">
       <div class="pb-slicer pb-dd" data-dd="scen"><span class="pb-dd-label" id="pb-dd-scen-lbl">Demand Scenario</span><button type="button" class="pb-dd-btn" id="pb-dd-scen-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="pb-dd-scen-list" aria-labelledby="pb-dd-scen-lbl pb-dd-scen-btn"><span class="pb-dd-val"><span class="pb-dd-ghost" data-dd-label="seg">Segment (case prices)</span><span class="pb-dd-ghost" data-dd-label="low">Low-sensitivity (elasticity = 0.8)</span></span><svg class="pb-dd-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><ul class="pb-dd-list" id="pb-dd-scen-list" role="listbox" aria-labelledby="pb-dd-scen-lbl"><li role="option" id="pb-dd-scen-seg" data-val="seg" tabindex="-1" aria-selected="false"><span>Segment (case prices)</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li><li role="option" id="pb-dd-scen-low" data-val="low" tabindex="-1" aria-selected="false"><span>Low-sensitivity (elasticity 0.8)</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li></ul></div>
@@ -431,8 +441,8 @@
         <div class="k-delta" data-draw="kdelta" data-metric="save_us" data-fmt="usd" data-good="up" data-source="kpis" data-field="delta" data-where="metric=save_us">—</div>
       </article>
     </div><div class="pb-panel pb-verdict" id="verdict">
-      <h2>Why $45,000</h2>
-      <div class="pb-body pb-vbody">
+      <h2>Recommended price</h2>
+      <div class="pb-body pb-vbody"><div class="pb-reco"><i class="pb-dia pb-dia-lg" aria-hidden="true"></i><div class="pb-reco-main"><span class="pb-reco-val" data-draw="kprop" data-metric="price" data-fmt="usd" data-source="kpis" data-field="proposal" data-where="metric=price">—</span><span class="pb-reco-note">per CABG, all-inclusive, with 100 places a year reserved for patients who cannot pay</span></div></div><div class="pb-vtext">
       <p class="v-title" data-v="same">Recommended configuration</p>
       <p class="v-title" data-v="off" hidden="">Change against the recommendation</p>
       <p>Gap to best year-5 profit: <b data-draw="vnum" data-metric="gap_seg" data-col="proposal" data-fmt="m" data-source="kpis" data-field="proposal" data-where="metric=gap_seg">—</b> (case-price demand), <b data-draw="vnum" data-metric="gap_low" data-col="proposal" data-fmt="m" data-source="kpis" data-field="proposal" data-where="metric=gap_low">—</b> (low-sensitivity demand). Places for patients who cannot pay: <b data-draw="vnum" data-metric="places_poor" data-col="proposal" data-fmt="int" data-source="kpis" data-field="proposal" data-where="metric=places_poor">—</b>. US insurer saving: <b data-draw="vnum" data-metric="save_pct" data-col="proposal" data-fmt="pct" data-source="kpis" data-field="proposal" data-where="metric=save_pct">—</b>.</p>
@@ -441,7 +451,7 @@
       <p data-v="lower" hidden="">Lower price: year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>, places for patients who cannot pay <b data-draw="vnum" data-metric="places_poor" data-col="delta" data-fmt="sint" data-source="kpis" data-field="delta" data-where="metric=places_poor">—</b>. Capacity is full: no extra patients treated.</p>
       <p data-v="resless" hidden="">Fewer reserved places: year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>, places for patients who cannot pay <b data-draw="vnum" data-metric="places_poor" data-col="delta" data-fmt="sint" data-source="kpis" data-field="delta" data-where="metric=places_poor">—</b>.</p>
       <p data-v="resmore" hidden="">More reserved places: <b data-draw="vnum" data-metric="turned_away" data-col="selection" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=turned_away">—</b> paying patients turned away, year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>.</p>
-      </div>
+      </div></div>
     </div><div class="pb-ov-main"><div class="pb-panel" id="levers">
         <h2>Pricing levers</h2>
         <div class="pb-body pb-lever-body">
