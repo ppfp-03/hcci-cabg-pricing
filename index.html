@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HCCI CABG Pricing Rationale</title>
+<meta name="description" content="Interactive pricing model for CABG at Health City Cayman Islands: recommended price $45,000, compared with alternative prices.">
+<style>
+  html, body { margin: 0; background: #EEF0F3; }
+  body { padding: 16px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px)); }
+  .pb { max-width: 1440px; margin: 0 auto; }
+  .dash-skeleton { color: transparent !important; background: linear-gradient(90deg, #E6E9EE, #F2F4F7, #E6E9EE); border-radius: 4px; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>window.__HCCI_DATA = {"params": {"price": 45000, "reserve": 100, "scen": "seg", "yr": 5}, "datasets": {"assumptions": [{"cv": 2000, "staff": 10000000.0, "oh": 4000000.0, "capex": 70000000.0, "rate": 0.08, "life": 25, "share": 0.3, "q1": 200, "q5": 450, "ref": 50000, "cap": 600, "e": 0.8, "cay": 150, "cay_alt": 102000, "car_share": 0.3333333333333333, "us_alt": 80000, "car_alt": 80000, "travel": 4000, "proposal_price": 45000, "proposal_reserve": 100}], "drivers": [{"assumption": "Demand scenario", "range": "segment vs low-sensitivity", "group": "Demand", "price_low": 46500, "price_high": 57500, "price_base": 46500, "profit_low": 14730746, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 11000, "profit_swing": 602000}, {"assumption": "Capacity", "range": "450 to 800 CABGs", "group": "Capacity", "price_low": 46500, "price_high": 57000, "price_base": 46500, "profit_low": 8882746, "profit_high": 15553258, "profit_base": 15332746, "price_swing": 10500, "profit_swing": 6670513}, {"assumption": "Plan volume, year 5", "range": "350 to 550 cases", "group": "Demand", "price_low": 46500, "price_high": 53000, "price_base": 46500, "profit_low": 10463088, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 6500, "profit_swing": 4869658}, {"assumption": "Caymanian cases", "range": "80 to 200", "group": "Demand", "price_low": 46500, "price_high": 50000, "price_base": 46500, "profit_low": 15158173, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 3500, "profit_swing": 174573}, {"assumption": "Caribbean share of foreign patients", "range": "0% to 100%", "group": "Demand", "price_low": 46000, "price_high": 48500, "price_base": 46500, "profit_low": 15332746, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 2500, "profit_swing": 0}, {"assumption": "Travel cost for US patients", "range": "$2,000 to $6,000", "group": "Demand", "price_low": 46000, "price_high": 47500, "price_base": 46500, "profit_low": 15332746, "profit_high": 15332746, "profit_base": 15332746, "price_swing": 1500, "profit_swing": 0}, {"assumption": "Reserved places", "range": "0 to 100", "group": "Mission", "price_low": 46500, "price_high": 46500, "price_base": 46500, "profit_low": 15332746, "profit_high": 15553258, "profit_base": 15332746, "price_swing": 0, "profit_swing": 220513}, {"assumption": "Variable cost per case", "range": "$1,500 to $3,000", "group": "Cost", "price_low": 46000, "price_high": 47000, "price_base": 46500, "profit_low": 14832746, "profit_high": 15582746, "profit_base": 15332746, "price_swing": 1000, "profit_swing": 750000}, {"assumption": "CABG share of fixed costs", "range": "20% to 50%", "group": "Cost", "price_low": 46500, "price_high": 46500, "price_base": 46500, "profit_low": 11221243, "profit_high": 17388497, "profit_base": 15332746, "price_swing": 0, "profit_swing": 6167254}, {"assumption": "Staff cost", "range": "$8M to $13M", "group": "Cost", "price_low": 46500, "price_high": 46500, "price_base": 46500, "profit_low": 14432746, "profit_high": 15932746, "profit_base": 15332746, "price_swing": 0, "profit_swing": 1500000}, {"assumption": "Overhead", "range": "$3M to $5M", "group": "Cost", "price_low": 46500, "price_high": 46500, "price_base": 46500, "profit_low": 15032746, "profit_high": 15632746, "profit_base": 15332746, "price_swing": 0, "profit_swing": 600000}], "ledger": [{"assumption": "Plan volume", "value": "about 200 (yr 1), 450 (yr 5)", "case_gives": "Plan estimate at around $50,000", "where": "p. 10", "we_added": "Linear ramp between year 1 and year 5", "confidence": "Medium"}, {"assumption": "Caymanian demand", "value": "about 150 cases, capped", "case_gives": "$14.5M spent on US cardiothoracic surgery in 2008; 400 heart patients sent abroad", "where": "p. 6", "we_added": "Spending divided by $80,000-102,000 per case; not a count of CABGs", "confidence": "Low"}, {"assumption": "Foreign insured demand", "value": "200 US, 100 Caribbean", "case_gives": "Talks with US and Caribbean insurers; no volumes", "where": "p. 10", "we_added": "Residual of the plan (450 - 150); one-third Caribbean share", "confidence": "Low"}, {"assumption": "Price at which each group stops coming", "value": "$102k Caymanians, $76k US, $80k Caribbean", "case_gives": "Miami all-in $102,000; US commercial rate $80,000", "where": "p. 6, Exh. 6", "we_added": "$4,000 travel for US patients; Caribbean rate set equal to US", "confidence": "Medium"}, {"assumption": "Shape of demand", "value": "straight line to the stop price", "case_gives": "One demand point only", "where": "p. 10", "we_added": "Linear form, tested against an elasticity-0.8 scenario", "confidence": "Medium"}, {"assumption": "Variable cost", "value": "$2,000 per case", "case_gives": "NH consumables $570; HCCI supplies cost 2x India", "where": "Exh. 3, p. 9", "we_added": "$400-800 for food, laundry and cleaning", "confidence": "Medium"}, {"assumption": "Fixed costs", "value": "$20.6M a year", "case_gives": "$70M investment; 140 staff; salary ratios", "where": "pp. 2, 6, 9", "we_added": "Salary levels, overhead, 8% over 25 years", "confidence": "Medium-low"}, {"assumption": "CABG share of fixed costs", "value": "30%", "case_gives": "Services offered; NH CABG mix 48%", "where": "pp. 3, 9", "we_added": "The allocation itself", "confidence": "Low"}, {"assumption": "Capacity", "value": "about 600 CABGs a year", "case_gives": "At most 4 cardiac surgeries a day", "where": "p. 9", "we_added": "300 operating days; NH's 48% CABG mix", "confidence": "Medium"}, {"assumption": "Reserved places", "value": "100 a year", "case_gives": "Mission statement; NH: 37% of patients below break-even", "where": "pp. 1, 3", "we_added": "The number, and the rule that reserved places come before paying patients", "confidence": "Policy choice"}], "triggers": [{"signal": "Paying patients in year 1", "test": "below", "threshold": 144, "unit": "patients", "action": "Review costs and referral channels before cutting the price"}, {"signal": "Insurer contracts signed by JCI accreditation (2015)", "test": "equal to", "threshold": 0, "unit": "contracts", "action": "Focus on Caymanian and Caribbean referrals; consider a basic package"}, {"signal": "Paying patients on a waiting list", "test": "above", "threshold": 25, "unit": "for 6 months", "action": "Raise the price for new contracts or bring the expansion forward"}, {"signal": "Average variable cost per case", "test": "above", "threshold": 3000, "unit": "dollars", "action": "Narrow what the package covers"}, {"signal": "Caribbean patients moving away from Ascension", "test": "any", "threshold": null, "unit": "", "action": "Agree a referral arrangement with Ascension"}]}};</script>
+<script>
+(function () {
+  // Minimal runtime replacing the claude.ai dashboard host: datasets, calcs, drawings and parameters.
+  const D = window.__HCCI_DATA;
+  let params = Object.assign({}, D.params), cache = {}, raf = null;
+  const calcs = {}, draws = {}, onDatas = [];
+  const data = (id) => {
+    if (id in cache) return cache[id];
+    let r;
+    if (D.datasets[id]) r = { status: 'ok', data: D.datasets[id] };
+    else if (calcs[id]) {
+      try { r = { status: 'ok', data: calcs[id].fn(...calcs[id].inputs.map((i) => data(i).data)) }; }
+      catch (e) { console.error(e); r = { status: 'error', data: null, message: String(e) }; }
+    } else r = { status: 'missing', data: [] };
+    cache[id] = r; return r;
+  };
+  const render = () => {
+    cache = {};
+    onDatas.forEach((f) => { try { f(); } catch (e) { console.error(e); } });
+    Object.keys(draws).forEach((name) => document.querySelectorAll('[data-draw="' + name + '"]').forEach((el) => {
+      if (el.closest('[hidden]')) return;
+      try { draws[name](el); } catch (e) { console.error(e); }
+    }));
+  };
+  const schedule = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = null; render(); }); };
+  window.dash = {
+    calc: (id, o) => { calcs[id] = o; },
+    data,
+    draw: (n, f) => { if (typeof f === 'function') draws[n] = f; else schedule(); },
+    onData: (f) => { onDatas.push(f); },
+    params: () => Object.assign({}, params),
+    setParams: (o) => { Object.entries(o).forEach(([k, v]) => { if (v === null) delete params[k]; else params[k] = v; }); schedule(); },
+    resetParams: () => { params = Object.assign({}, D.params); schedule(); },
+    setLink: (n) => { try { history.replaceState(null, '', '#' + n); } catch (e) {} schedule(); },
+    colors: ['#1F4E9C', '#0E9AA7', '#E8B400', '#5F6670'],
+    __render: render,
+  };
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(schedule, 120); });
+})();
+</script>
+</head>
+<body>
+<style>
+/* Report in stile Power BI. Oro = nostra proposta, teal = selezione della lettrice.
+   Token: colori in hex (fallback) e OKLCH; durate, easing, stagger e interlinee condivisi. */
+.pb {
+  --pb-canvas:#EEF0F3; --pb-panel:#FFFFFF; --pb-head:#1B2F5B; --pb-ink:#1F2328; --pb-muted:#5F6670; --pb-line:#DCE0E6;
+  --pb-gold:#E8B400; --pb-gold-ink:#8A6A00; --pb-gold-soft:#FFF4CC; --pb-teal:#0E9AA7; --pb-teal-ink:#0B7480; --pb-teal-soft:#DDF3F5;
+  --pb-navy:#1F4E9C; --pb-good:#167A43; --pb-bad:#C8384B; --pb-grey:#C9CED6; --pb-grid:#E6E9EE;
+  --pb-dur-in: 200ms; --pb-dur-out: 160ms; --pb-dur-dd-in: 180ms; --pb-dur-dd-out: 145ms; --pb-dur-press: 120ms; --pb-stagger: 30ms;
+  --pb-ease-out: cubic-bezier(.16, 1, .3, 1); --pb-ease-in: cubic-bezier(.4, 0, 1, 1); --pb-ease-io: cubic-bezier(.65, 0, .35, 1);
+  --pb-lh-num: 1.1; --pb-lh-ui: 1.3; --pb-lh-text: 1.5;
+  --pb-hit: 32px;
+  background: var(--pb-canvas); color: var(--pb-ink);
+  font-family: "Segoe UI", "Segoe UI Web", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 13px; line-height: var(--pb-lh-ui); border-radius: 6px; padding: 14px; display: grid; gap: 12px; color-scheme: light;
+}
+@supports (color: oklch(50% 0.1 200)) {
+  .pb {
+    --pb-canvas: oklch(95.4% 0.005 258.3); --pb-panel: oklch(100% 0 0); --pb-head: oklch(31.4% 0.083 263.9);
+    --pb-ink: oklch(25.4% 0.011 254); --pb-muted: oklch(50.8% 0.018 257.2); --pb-line: oklch(90.5% 0.009 258.3);
+    --pb-gold: oklch(79.5% 0.163 87.6); --pb-gold-ink: oklch(54.1% 0.111 87.7); --pb-gold-soft: oklch(96.6% 0.053 94.4);
+    --pb-teal: oklch(62.7% 0.105 205.6); --pb-teal-ink: oklch(51.2% 0.086 207.7); --pb-teal-soft: oklch(94.9% 0.023 203.4);
+    --pb-navy: oklch(43.8% 0.137 260.1); --pb-good: oklch(51.1% 0.123 153.2); --pb-bad: oklch(56.1% 0.18 18);
+    --pb-grey: oklch(85% 0.012 259.8); --pb-grid: oklch(93.3% 0.007 260.7);
+  }
+}
+.pb * { box-sizing: border-box; }
+.pb .num, .pb .k-val, .pb .k-prop, .pb .k-delta, .pb .l-val, .pb-table, .pb-tip, .pb-chart svg text, .pb-verdict b { font-variant-numeric: tabular-nums; }
+
+/* Testata */
+.pb-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 16px; }
+.pb-top h1 { margin: 0; font-size: clamp(19px, 15px + 0.8vw, 25px); line-height: 1.2; font-weight: 700; color: var(--pb-head); letter-spacing: -0.01em; text-wrap: balance; }
+.pb-top p { margin: 3px 0 0; font-size: 13.5px; line-height: var(--pb-lh-text); color: var(--pb-muted); max-width: 80ch; text-wrap: pretty; }
+.pb-slicers { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pb-slicer { position: relative; display: flex; align-items: center; gap: 4px; background: var(--pb-panel); border: 1px solid var(--pb-line); border-radius: 4px; padding: 0 0 0 10px; min-height: var(--pb-hit);
+              transition: border-color var(--pb-dur-in) var(--pb-ease-out), box-shadow var(--pb-dur-in) var(--pb-ease-out); }
+.pb-slicer:hover { border-color: var(--pb-navy); }
+.pb-slicer:focus-within, .pb-slicer.is-open { border-color: var(--pb-navy); box-shadow: 0 0 0 2px color-mix(in oklab, var(--pb-navy) 22%, transparent); }
+.pb-dd-label { font-size: 11.5px; letter-spacing: .01em; color: var(--pb-muted); white-space: nowrap; }
+.pb-dd-btn { display: flex; align-items: center; gap: 6px; font: inherit; font-weight: 600; color: var(--pb-ink); border: 0; background: transparent; min-height: calc(var(--pb-hit) - 2px); padding: 0 8px 0 4px; border-radius: 3px; cursor: pointer;
+             transition: transform var(--pb-dur-press) var(--pb-ease-out), background-color var(--pb-dur-in) var(--pb-ease-out); }
+.pb-dd-btn:hover { background: #F4F6FA; }
+.pb-dd-btn:active { transform: scale(.97); }
+.pb-dd-btn:focus-visible { outline: 2px solid var(--pb-navy); outline-offset: 1px; }
+.pb-dd-val { display: inline-grid; text-align: left; }
+.pb-dd-val > span { grid-area: 1 / 1; white-space: nowrap; }
+.pb-dd-val > .pb-dd-ghost { visibility: hidden; }
+.pb-dd-val > .is-current { visibility: visible; }
+.pb-dd-chev { width: 14px; height: 14px; flex: none; color: var(--pb-muted); transition: transform var(--pb-dur-in) var(--pb-ease-io), color var(--pb-dur-in) var(--pb-ease-out); }
+.pb-slicer.is-open .pb-dd-chev { transform: rotate(180deg); color: var(--pb-navy); }
+.pb-dd-list { position: absolute; top: calc(100% + 4px); right: -1px; min-width: calc(100% + 2px); z-index: 20; margin: 0; padding: 4px; list-style: none; background: #FFFFFF; border: 1px solid var(--pb-line); border-radius: 4px;
+              box-shadow: 0 8px 24px rgba(16,24,40,.14); transform-origin: top right;
+              visibility: hidden; opacity: 0; transform: scale(.95);
+              transition: opacity var(--pb-dur-dd-out) var(--pb-ease-in), transform var(--pb-dur-dd-out) var(--pb-ease-in), visibility 0s linear var(--pb-dur-dd-out); }
+.pb-slicer.is-open .pb-dd-list { visibility: visible; opacity: 1; transform: none;
+              transition: opacity var(--pb-dur-dd-in) var(--pb-ease-out), transform var(--pb-dur-dd-in) var(--pb-ease-out), visibility 0s; }
+.pb-dd-list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 34px; padding: 0 10px; border-radius: 3px; white-space: nowrap; cursor: pointer; color: var(--pb-ink); }
+.pb-dd-list li:hover, .pb-dd-list li:focus { background: #F1F4F9; outline: none; }
+.pb-dd-list li:focus-visible { box-shadow: inset 0 0 0 2px var(--pb-navy); }
+.pb-dd-list li[aria-selected="true"] { font-weight: 600; }
+.pb-dd-check { width: 14px; height: 14px; flex: none; color: var(--pb-navy); opacity: 0; transform: scale(.8); transition: opacity var(--pb-dur-in) var(--pb-ease-out), transform var(--pb-dur-in) var(--pb-ease-out); }
+.pb-dd-list li[aria-selected="true"] .pb-dd-check { opacity: 1; transform: none; }
+.pb-badge { background: var(--pb-gold); color: var(--pb-ink); font-size: 10.5px; font-weight: 700; letter-spacing: .06em; padding: 6px 9px; border-radius: 3px; text-transform: uppercase; line-height: 1; }
+
+/* KPI */
+.pb-kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 1100px) { .pb-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .pb-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pb-kpi { background: var(--pb-panel); border-radius: 4px; border: 1px solid var(--pb-line); padding: 10px 12px 11px; display: grid; gap: 4px; align-content: start; box-shadow: 0 1px 2px rgba(16,24,40,.06); min-width: 0;
+ }
+.pb-kpi .k-head { display: grid; grid-template-columns: minmax(0, 1fr) 22px; align-items: start; gap: 6px; }
+.pb-kpi h3 { margin: 0; font-size: 12.5px; line-height: 1.25; min-height: calc(2 * 1.25em); font-weight: 600; color: var(--pb-ink);
+             display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.pb-kpi svg.ic { width: 22px; height: 22px; color: var(--pb-navy); margin-top: -1px; }
+.pb-kpi .k-val { font-size: 26px; font-weight: 700; line-height: var(--pb-lh-num); letter-spacing: -0.01em; min-height: 1.1em; }
+.pb-kpi .k-prop { font-size: 11.5px; line-height: var(--pb-lh-ui); color: var(--pb-muted); display: flex; align-items: center; gap: 6px; }
+.pb-kpi .k-prop i { flex: none; width: 8px; height: 8px; background: var(--pb-gold); transform: rotate(45deg); }
+.pb-kpi .k-delta { font-size: 12px; line-height: var(--pb-lh-ui); font-weight: 600; transition: color var(--pb-dur-in) var(--pb-ease-out); }
+.k-up { color: var(--pb-good); } .k-down { color: var(--pb-bad); } .k-eq { color: var(--pb-gold-ink); } .k-neu { color: var(--pb-muted); }
+
+/* Verdetto: struttura fissa a tre righe per evitare salti di layout */
+.pb-vbody { gap: 5px; padding: 10px 14px 12px; }
+.pb-verdict p { margin: 0; line-height: var(--pb-lh-text); max-width: 115ch; text-wrap: pretty; }
+.pb-verdict .v-title { font-weight: 700; color: var(--pb-head); }
+.pb-verdict .v-hint { color: var(--pb-muted); }
+
+/* Griglie e pannelli */
+.pb-grid { display: grid; gap: 12px; grid-template-columns: minmax(250px, 1fr) minmax(0, 1.9fr) minmax(0, 1.25fr); }
+.pb-grid2 { display: grid; gap: 12px; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+@media (max-width: 1100px) { .pb-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .pb-grid > :nth-child(2) { grid-column: 1 / -1; order: -1; } }
+@media (max-width: 760px) { .pb-grid, .pb-grid2 { grid-template-columns: minmax(0, 1fr); } }
+.pb-panel { background: var(--pb-panel); border-radius: 4px; box-shadow: 0 1px 2px rgba(16,24,40,.06); min-width: 0; display: flex; flex-direction: column; }
+.pb-panel > h2 { margin: 0; background: var(--pb-head); color: #FFFFFF; font-size: 13.5px; line-height: var(--pb-lh-ui); font-weight: 600; letter-spacing: .005em; padding: 8px 12px; border-radius: 4px 4px 0 0; text-wrap: balance; }
+.pb-body { padding: 12px; display: grid; gap: 12px; min-width: 0; }
+
+/* Leve */
+.pb-lever { display: grid; gap: 4px; }
+.pb-lever .l-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.pb-lever .l-name { font-weight: 600; line-height: var(--pb-lh-ui); }
+.pb-lever .l-val { font-weight: 700; padding: 3px 8px; border-radius: 3px; background: var(--pb-gold-soft); min-width: 5.5ch; text-align: right;
+                   transition: background-color var(--pb-dur-in) var(--pb-ease-out); }
+.pb-lever.is-off .l-val { background: var(--pb-teal-soft); }
+.pb-track { position: relative; height: 28px; --thumb: var(--pb-gold); }
+.pb-lever.is-off .pb-track { --thumb: var(--pb-teal); }
+.pb-track input[type=range] { -webkit-appearance: none; appearance: none; position: absolute; inset: 5px 0 auto 0; width: 100%; height: 18px; margin: 0; background: transparent; cursor: pointer; }
+.pb-track input[type=range]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: var(--pb-line); }
+.pb-track input[type=range]::-moz-range-track { height: 4px; border-radius: 2px; background: var(--pb-line); }
+.pb-track input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7px; border-radius: 50%; background: var(--thumb); border: 2px solid #FFFFFF; box-shadow: 0 0 0 1px rgba(16,24,40,.25), 0 1px 3px rgba(16,24,40,.2);
+  transition: transform var(--pb-dur-press) var(--pb-ease-out), background-color var(--pb-dur-in) var(--pb-ease-out); }
+.pb-track input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--thumb); border: 2px solid #FFFFFF; box-shadow: 0 0 0 1px rgba(16,24,40,.25), 0 1px 3px rgba(16,24,40,.2);
+  transition: transform var(--pb-dur-press) var(--pb-ease-out), background-color var(--pb-dur-in) var(--pb-ease-out); }
+.pb-track input[type=range]:active::-webkit-slider-thumb { transform: scaleX(1.12); }
+.pb-track input[type=range]:active::-moz-range-thumb { transform: scaleX(1.12); }
+.pb-track input[type=range]:focus-visible { outline: 2px solid var(--pb-navy); outline-offset: 4px; border-radius: 4px; }
+.pb-mark { position: absolute; top: 2px; width: 0; height: 24px; border-left: 2px solid var(--pb-gold); pointer-events: none; }
+.pb-mark::after { content: ""; position: absolute; top: -3px; left: -6px; width: 10px; height: 10px; background: var(--pb-gold); transform: rotate(45deg); box-shadow: 0 0 0 1px #FFFFFF; }
+.pb-lever .l-state { min-height: 1.3em; font-size: 11.5px; line-height: var(--pb-lh-ui); font-weight: 600; }
+.pb-lever .l-off { color: var(--pb-teal-ink); }
+.pb-lever .l-on { color: var(--pb-gold-ink); }
+
+/* Pulsanti */
+.pb-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.pb-btn { font: inherit; font-size: 12px; line-height: 1; min-height: var(--pb-hit); padding: 0 11px; border-radius: 4px; border: 1px solid var(--pb-line); background: #FFFFFF; color: var(--pb-ink); cursor: pointer;
+          transition: transform var(--pb-dur-press) var(--pb-ease-out), background-color var(--pb-dur-in) var(--pb-ease-out), border-color var(--pb-dur-in) var(--pb-ease-out), color var(--pb-dur-in) var(--pb-ease-out); }
+.pb-btn:hover { border-color: var(--pb-navy); background: #F7F9FC; }
+.pb-btn:active { transform: scale(.97); }
+.pb-btn:focus-visible { outline: 2px solid var(--pb-navy); outline-offset: 2px; }
+.pb-btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+.pb-btn.gold { background: var(--pb-gold); border-color: var(--pb-gold); font-weight: 700; color: var(--pb-ink); }
+.pb-btn.gold:hover { background: color-mix(in oklab, var(--pb-gold) 88%, black); }
+.pb-btn[aria-pressed="true"] { background: var(--pb-head); color: #FFFFFF; border-color: var(--pb-head); }
+.pb-btn.gold[aria-pressed="true"] { background: var(--pb-gold); color: var(--pb-ink); box-shadow: inset 0 0 0 2px var(--pb-ink); }
+
+/* Legende e grafici */
+.pb-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0; padding: 0; list-style: none; font-size: 11.5px; line-height: var(--pb-lh-ui); color: var(--pb-muted); }
+.pb-legend li { display: flex; align-items: center; gap: 6px; }
+.pb-legend i { flex: none; display: inline-block; width: 16px; height: 3px; border-radius: 2px; }
+.pb-legend i.dash { height: 0 !important; background: none !important; border-top: 2px dashed currentColor; }
+.pb-legend i.dia { width: 9px; height: 9px; transform: rotate(45deg); }
+.pb-chart { position: relative; min-height: 290px; }
+.pb-chart.sm { min-height: 260px; }
+.pb-chart.tall { min-height: 420px; }
+.pb-chart svg text { font-family: inherit; font-size: 11px; fill: var(--pb-muted); }
+.pb-chart svg .t-ink { fill: var(--pb-ink); font-weight: 600; }
+.pb-chart svg .t-gold { fill: var(--pb-gold-ink); font-weight: 700; }
+.pb-tip { position: absolute; pointer-events: none; background: #FFFFFF; border: 1px solid var(--pb-line); box-shadow: 0 4px 12px rgba(16,24,40,.12); border-radius: 4px; padding: 6px 9px; font-size: 12px; line-height: 1.45; white-space: nowrap; z-index: 3; color: var(--pb-ink);
+          opacity: 0; transform: scale(.95); transform-origin: top left; transition: opacity var(--pb-dur-out) var(--pb-ease-in), transform var(--pb-dur-out) var(--pb-ease-in); }
+.pb-tip.is-on { opacity: 1; transform: none; transition-duration: var(--pb-dur-in); transition-timing-function: var(--pb-ease-out); }
+
+/* Tabelle */
+.pb-tw { overflow-x: auto; }
+.pb-table { width: 100%; border-collapse: collapse; font-size: 12.5px; line-height: var(--pb-lh-ui); }
+.pb-table th { text-align: right; font-weight: 600; font-size: 11.5px; letter-spacing: .01em; color: var(--pb-muted); padding: 7px 8px; border-bottom: 2px solid var(--pb-line); white-space: nowrap; }
+.pb-table th:first-child, .pb-table td:first-child { text-align: left; }
+.pb-table td { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--pb-line); white-space: nowrap; transition: background-color var(--pb-dur-in) var(--pb-ease-out); }
+.pb-table tbody tr:hover td { background: #F6F8FB; }
+.pb-table tr.r-prop td { background: var(--pb-gold-soft); font-weight: 700; }
+.pb-table tr.r-sel td { background: var(--pb-teal-soft); }
+.pb-table td.c-up { color: var(--pb-good); } .pb-table td.c-down { color: var(--pb-bad); }
+.pb-table td.c-up::before { content: "▲ "; font-size: .8em; } .pb-table td.c-down::before { content: "▼ "; font-size: .8em; }
+.pb-table.text td { white-space: normal; text-align: left; vertical-align: top; hyphens: auto; line-height: 1.4; }
+.pb-table.text th { text-align: left; }
+.pb-heat td { text-align: center; font-weight: 600; }
+.pb-heat td.h-prop { outline: 2px solid var(--pb-gold); outline-offset: -2px; }
+.pb-heat th.h-plan { color: var(--pb-ink); }
+.pb-note { font-size: 11.5px; line-height: 1.45; color: var(--pb-muted); margin: 0; max-width: 85ch; text-wrap: pretty; }
+.pb-list { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; line-height: var(--pb-lh-text); max-width: 80ch; }
+
+/* Schede: la larghezza del grassetto è riservata, la selezione non sposta le altre */
+.pb-tabs { display: flex; flex-wrap: wrap; background: var(--pb-panel); border-radius: 4px; overflow: hidden; box-shadow: 0 1px 2px rgba(16,24,40,.06); }
+.pb-tab { display: inline-grid; align-items: center; font: inherit; font-size: 13px; min-height: 44px; padding: 0 18px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--pb-muted); cursor: pointer;
+          transition: color var(--pb-dur-in) var(--pb-ease-out), border-color var(--pb-dur-in) var(--pb-ease-out), background-color var(--pb-dur-in) var(--pb-ease-out); }
+.pb-tab > .tab-label, .pb-tab::after { grid-area: 1 / 1; }
+.pb-tab > .tab-label { font-weight: 500; }
+.pb-tab::after { content: attr(data-text); font-weight: 700; visibility: hidden; pointer-events: none; }
+.pb-tab:hover { color: var(--pb-ink); background: #FAFAFB; }
+.pb-tab[aria-selected="true"] { color: var(--pb-ink); border-bottom-color: var(--pb-gold); background: #FAFAFB; }
+.pb-tab[aria-selected="true"] > .tab-label { font-weight: 700; }
+.pb-tab:focus-visible { outline: 2px solid var(--pb-navy); outline-offset: -2px; }
+.pb-tabnote { margin-left: auto; align-self: center; padding: 0 14px; font-size: 11.5px; color: var(--pb-muted); }
+.pb-page { display: grid; gap: 12px; }
+.pb-foot { background: var(--pb-panel); border: 1px solid var(--pb-line); border-radius: 4px; box-shadow: 0 1px 2px rgba(16,24,40,.06); }
+.pb-foot > summary { list-style: none; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; cursor: pointer; font-weight: 600; color: var(--pb-head); border-radius: 4px;
+                     transition: background-color var(--pb-dur-in) var(--pb-ease-out); user-select: none; }
+.pb-foot > summary::-webkit-details-marker { display: none; }
+.pb-foot > summary::before { content: ""; width: 7px; height: 7px; flex: none; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); margin: 0 4px 0 2px;
+                             transition: transform var(--pb-dur-in) var(--pb-ease-io); }
+.pb-foot[open] > summary::before { transform: rotate(45deg); }
+.pb-foot > summary:hover { background: #F4F6FA; }
+.pb-foot > summary:focus-visible { outline: 2px solid var(--pb-navy); outline-offset: -2px; }
+.pb-foot > summary .pb-acc-hint { margin-left: auto; font-weight: 400; font-size: 11.5px; color: var(--pb-muted); }
+.pb-foot p { margin: 0; padding: 0 12px 12px 36px; line-height: var(--pb-lh-text); max-width: calc(95ch + 48px); color: var(--pb-muted); text-wrap: pretty; }
+
+/* Centratura ottica sulle etichette compatte, come miglioramento progressivo */
+@supports (text-box: trim-both cap alphabetic) {
+  .pb-badge { text-box: trim-both cap alphabetic; }
+}
+
+/* Movimento: solo se l'utente non ha chiesto di ridurlo */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes pb-rise { from { opacity: .35; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  @keyframes pb-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--pb-gold) 70%, transparent); } 100% { box-shadow: 0 0 0 10px color-mix(in oklab, var(--pb-gold) 0%, transparent); } }
+  .pb-kpis > .pb-kpi { animation: pb-rise var(--pb-dur-in) var(--pb-ease-out) both; }
+  .pb-kpis > .pb-kpi:nth-child(2) { animation-delay: calc(1 * var(--pb-stagger)); }
+  .pb-kpis > .pb-kpi:nth-child(3) { animation-delay: calc(2 * var(--pb-stagger)); }
+  .pb-kpis > .pb-kpi:nth-child(4) { animation-delay: calc(3 * var(--pb-stagger)); }
+  .pb-kpis > .pb-kpi:nth-child(5) { animation-delay: calc(4 * var(--pb-stagger)); }
+  .pb-kpis > .pb-kpi:nth-child(6) { animation-delay: calc(5 * var(--pb-stagger)); }
+  .pb-verdict p[data-v]:not([hidden]) { animation: pb-rise var(--pb-dur-in) var(--pb-ease-out) both; }
+  .pb-verdict p[data-v]:not([hidden]) ~ p[data-v]:not([hidden]) { animation-delay: var(--pb-stagger); }
+  .pb-verdict.pb-pulse { animation: pb-pulse 320ms var(--pb-ease-out) 1; }
+  .pb-page:not([hidden]) { animation: pb-rise var(--pb-dur-in) var(--pb-ease-out) both; }
+  .pb-foot[open] > p { animation: pb-rise var(--pb-dur-in) var(--pb-ease-out) both; }
+  .pb-slicer.is-open .pb-dd-list li { animation: pb-rise var(--pb-dur-dd-in) var(--pb-ease-out) both; }
+  .pb-slicer.is-open .pb-dd-list li:nth-child(2) { animation-delay: var(--pb-stagger); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pb *, .pb *::before, .pb *::after { transition-duration: 1ms !important; animation: none !important; }
+}
+</style>
+
+<div class="pb" lang="en">
+
+  <header class="pb-top" id="header">
+    <div>
+      <h1>HCCI CABG pricing · recommended price $45,000</h1>
+      <p>◆ Gold = recommendation. Every value is compared with it.</p>
+    </div>
+    <div class="pb-slicers">
+      <div class="pb-slicer pb-dd" data-dd="scen"><span class="pb-dd-label" id="pb-dd-scen-lbl">Demand Scenario</span><button type="button" class="pb-dd-btn" id="pb-dd-scen-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="pb-dd-scen-list" aria-labelledby="pb-dd-scen-lbl pb-dd-scen-btn"><span class="pb-dd-val"><span class="pb-dd-ghost" data-dd-label="seg">Segment (case prices)</span><span class="pb-dd-ghost" data-dd-label="low">Low-sensitivity (elasticity = 0.8)</span></span><svg class="pb-dd-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><ul class="pb-dd-list" id="pb-dd-scen-list" role="listbox" aria-labelledby="pb-dd-scen-lbl"><li role="option" id="pb-dd-scen-seg" data-val="seg" tabindex="-1" aria-selected="false"><span>Segment (case prices)</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li><li role="option" id="pb-dd-scen-low" data-val="low" tabindex="-1" aria-selected="false"><span>Low-sensitivity (elasticity 0.8)</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li></ul></div>
+      <div class="pb-slicer pb-dd" data-dd="yr"><span class="pb-dd-label" id="pb-dd-yr-lbl">Year</span><button type="button" class="pb-dd-btn" id="pb-dd-yr-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="pb-dd-yr-list" aria-labelledby="pb-dd-yr-lbl pb-dd-yr-btn"><span class="pb-dd-val"><span class="pb-dd-ghost" data-dd-label="5">Year 5</span><span class="pb-dd-ghost" data-dd-label="1">Year 1</span></span><svg class="pb-dd-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><ul class="pb-dd-list" id="pb-dd-yr-list" role="listbox" aria-labelledby="pb-dd-yr-lbl"><li role="option" id="pb-dd-yr-5" data-val="5" tabindex="-1" aria-selected="false"><span>Year 5</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li><li role="option" id="pb-dd-yr-1" data-val="1" tabindex="-1" aria-selected="false"><span>Year 1</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li></ul></div>
+    </div>
+  </header>
+
+  <section class="pb-page" id="overview">
+
+    <div class="pb-kpis">
+      <article class="pb-kpi" id="kpi-price" data-kcard="price">
+        <div class="k-head"><h3 title="CABG list price">CABG list price</h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"></path><circle cx="7.5" cy="8.5" r="1.5"></circle></svg></div>
+        <div class="k-val dash-skeleton" data-draw="kval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</div>
+        <div class="k-prop"><i></i>Recommended <span data-draw="kprop" data-metric="price" data-fmt="usd" data-source="kpis" data-field="proposal" data-where="metric=price">—</span></div>
+        <div class="k-delta" data-draw="kdelta" data-metric="price" data-fmt="usd" data-good="none" data-source="kpis" data-field="delta" data-where="metric=price">—</div>
+      </article>
+      <article class="pb-kpi" id="kpi-paying" data-kcard="paying">
+        <div class="k-head"><h3 title="Paying patients treated">Paying patients treated</h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.2c2.9.4 5 2.9 5 5.8"></path></svg></div>
+        <div class="k-val dash-skeleton" data-draw="kval" data-metric="paying" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=paying">—</div>
+        <div class="k-prop"><i></i>Recommended <span data-draw="kprop" data-metric="paying" data-fmt="int" data-source="kpis" data-field="proposal" data-where="metric=paying">—</span></div>
+        <div class="k-delta" data-draw="kdelta" data-metric="paying" data-fmt="int" data-good="up" data-source="kpis" data-field="delta" data-where="metric=paying">—</div>
+      </article>
+      <article class="pb-kpi" id="kpi-profit" data-kcard="profit">
+        <div class="k-head"><h3 title="CABG profit, selected year">CABG profit, selected year</h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V10M10 20V5M16 20v-7M22 20H2"></path></svg></div>
+        <div class="k-val dash-skeleton" data-draw="kval" data-metric="profit" data-fmt="m" data-source="kpis" data-field="selection" data-where="metric=profit">—</div>
+        <div class="k-prop"><i></i>Recommended <span data-draw="kprop" data-metric="profit" data-fmt="m" data-source="kpis" data-field="proposal" data-where="metric=profit">—</span></div>
+        <div class="k-delta" data-draw="kdelta" data-metric="profit" data-fmt="m" data-good="up" data-source="kpis" data-field="delta" data-where="metric=profit">—</div>
+      </article>
+      <article class="pb-kpi" id="kpi-places" data-kcard="places_poor">
+        <div class="k-head"><h3 title="Places for patients who cannot pay">Places for patients who cannot pay</h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg></div>
+        <div class="k-val dash-skeleton" data-draw="kval" data-metric="places_poor" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=places_poor">—</div>
+        <div class="k-prop"><i></i>Recommended <span data-draw="kprop" data-metric="places_poor" data-fmt="int" data-source="kpis" data-field="proposal" data-where="metric=places_poor">—</span></div>
+        <div class="k-delta" data-draw="kdelta" data-metric="places_poor" data-fmt="int" data-good="up" data-source="kpis" data-field="delta" data-where="metric=places_poor">—</div>
+      </article>
+      <article class="pb-kpi" id="kpi-shortfall" data-kcard="shortfall">
+        <div class="k-head"><h3 title="Worst-case gap to best price, yr 5">Worst-case gap to best price, yr 5</h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l9 16H3z"></path><path d="M12 10v4M12 17v.5"></path></svg></div>
+        <div class="k-val dash-skeleton" data-draw="kval" data-metric="shortfall" data-fmt="m" data-source="kpis" data-field="selection" data-where="metric=shortfall">—</div>
+        <div class="k-prop"><i></i>Recommended <span data-draw="kprop" data-metric="shortfall" data-fmt="m" data-source="kpis" data-field="proposal" data-where="metric=shortfall">—</span></div>
+        <div class="k-delta" data-draw="kdelta" data-metric="shortfall" data-fmt="m" data-good="down" data-source="kpis" data-field="delta" data-where="metric=shortfall">—</div>
+      </article>
+      <article class="pb-kpi" id="kpi-save" data-kcard="save_us">
+        <div class="k-head"><h3 title="Saving per case, US insurer">Saving per case, US insurer</h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></div>
+        <div class="k-val dash-skeleton" data-draw="kval" data-metric="save_us" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=save_us">—</div>
+        <div class="k-prop"><i></i>Recommended <span data-draw="kprop" data-metric="save_us" data-fmt="usd" data-source="kpis" data-field="proposal" data-where="metric=save_us">—</span></div>
+        <div class="k-delta" data-draw="kdelta" data-metric="save_us" data-fmt="usd" data-good="up" data-source="kpis" data-field="delta" data-where="metric=save_us">—</div>
+      </article>
+    </div>
+
+    <div class="pb-panel pb-verdict" id="verdict">
+      <h2>Why $45,000</h2>
+      <div class="pb-body pb-vbody">
+      <p class="v-title" data-v="same">Recommended configuration</p>
+      <p class="v-title" data-v="off" hidden="">Change against the recommendation</p>
+      <p>Gap to best year-5 profit: <b data-draw="vnum" data-metric="gap_seg" data-col="proposal" data-fmt="m" data-source="kpis" data-field="proposal" data-where="metric=gap_seg">—</b> (case-price demand), <b data-draw="vnum" data-metric="gap_low" data-col="proposal" data-fmt="m" data-source="kpis" data-field="proposal" data-where="metric=gap_low">—</b> (low-sensitivity demand). Places for patients who cannot pay: <b data-draw="vnum" data-metric="places_poor" data-col="proposal" data-fmt="int" data-source="kpis" data-field="proposal" data-where="metric=places_poor">—</b>. US insurer saving: <b data-draw="vnum" data-metric="save_pct" data-col="proposal" data-fmt="pct" data-source="kpis" data-field="proposal" data-where="metric=save_pct">—</b>.</p>
+      <p class="v-hint" data-v="hint">Move a lever to compare.</p>
+      <p data-v="higher" hidden="">Higher price: year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b> (case-price demand), paying patients <b data-draw="vnum" data-metric="paying" data-col="delta" data-fmt="sint" data-source="kpis" data-field="delta" data-where="metric=paying">—</b>, insurer saving −<b data-draw="vnum" data-metric="save_us" data-col="delta" data-fmt="absusd" data-source="kpis" data-field="delta" data-where="metric=save_us">—</b> per case.</p>
+      <p data-v="lower" hidden="">Lower price: year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>, places for patients who cannot pay <b data-draw="vnum" data-metric="places_poor" data-col="delta" data-fmt="sint" data-source="kpis" data-field="delta" data-where="metric=places_poor">—</b>. Capacity is full: no extra patients treated.</p>
+      <p data-v="resless" hidden="">Fewer reserved places: year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>, places for patients who cannot pay <b data-draw="vnum" data-metric="places_poor" data-col="delta" data-fmt="sint" data-source="kpis" data-field="delta" data-where="metric=places_poor">—</b>.</p>
+      <p data-v="resmore" hidden="">More reserved places: <b data-draw="vnum" data-metric="turned_away" data-col="selection" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=turned_away">—</b> paying patients turned away, year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>.</p>
+      </div>
+    </div>
+
+    <div class="pb-grid">
+      <div class="pb-panel" id="levers">
+        <h2>Pricing levers</h2>
+        <div class="pb-body">
+          <div class="pb-lever" id="lever-price" data-lever="price">
+            <div class="l-row"><span class="l-name">CABG price</span><span class="l-val" data-draw="lval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</span></div>
+            <div class="pb-track"><input type="range" id="pb-price" min="30000" max="70000" step="500" value="45000" aria-label="CABG price"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div>
+            <div class="l-state"><span class="l-on" data-on="price">◆ Recommended</span><span class="l-off" data-off="price" hidden="">Changed · recommendation at ◆</span></div>
+          </div>
+          <div class="pb-lever" id="lever-reserve" data-lever="reserve">
+            <div class="l-row"><span class="l-name">Places reserved for patients who cannot pay</span><span class="l-val" data-draw="lval" data-metric="reserved" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=reserved">—</span></div>
+            <div class="pb-track"><input type="range" id="pb-reserve" min="0" max="150" step="10" value="100" aria-label="Reserved places"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div>
+            <div class="l-state"><span class="l-on" data-on="reserve">◆ Recommended</span><span class="l-off" data-off="reserve" hidden="">Changed · recommendation at ◆</span></div>
+          </div>
+          <div class="pb-btns" role="group" aria-label="Quick comparisons">
+            <button type="button" class="pb-btn gold" aria-pressed="true" data-preset="45000">Recommended</button>
+            <button type="button" class="pb-btn" data-preset="50000">Plan $50k</button>
+            <button type="button" class="pb-btn" data-preset="50500">Worst-case $50.5k</button>
+            <button type="button" class="pb-btn" data-preset="57500">High $57.5k</button>
+            <button type="button" class="pb-btn" data-preset="40000">Low $40k</button>
+          </div>
+          <p class="pb-note">Capacity ≈ 600 CABGs a year (4 cardiac surgeries a day, p. 9). Reserved places are filled first.</p>
+        </div>
+      </div>
+
+      <div class="pb-panel" id="panel-curve">
+        <h2>Year-5 CABG profit at each price</h2>
+        <div class="pb-body">
+          <ul class="pb-legend">
+            <li><i data-sw="navy"></i>Segment demand</li>
+            <li><i class="dash" data-sw="teal"></i>Low-sensitivity demand</li>
+            <li><i class="dia" data-sw="gold"></i>Recommended</li>
+            <li><i class="dash" data-sw="ink"></i>Selected</li>
+          </ul>
+          <div class="pb-chart" data-draw="curve" data-source="curve peaks kpis" role="img" aria-label="Year-5 CABG profit by price in both demand scenarios, with the recommended and selected prices marked"></div>
+        </div>
+      </div>
+
+      <div class="pb-panel" id="panel-bridge">
+        <h2>From revenue to profit</h2>
+        <div class="pb-body">
+          <ul class="pb-legend">
+            <li><i data-sw="navy"></i>Selected</li>
+            <li><i class="dia" data-sw="gold"></i>Recommended</li>
+          </ul>
+          <div class="pb-chart sm" data-draw="bridge" data-source="kpis" role="img" aria-label="Revenue, variable cost, allocated fixed cost and profit for the selection, with the recommended values marked"></div>
+          <p class="pb-note">Selected year and scenario. Subsidized patients pay the variable cost: no margin.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pb-grid2">
+      <div class="pb-panel" id="panel-compare">
+        <h2>Scenario comparison</h2>
+        <div class="pb-body pb-tw">
+          <table class="pb-table" id="table-compare" data-source="compare" data-row-key="name">
+            <thead><tr><th data-field="name">Option</th><th data-field="price">Price</th><th data-field="paying">Paying yr 5</th><th data-field="places_poor">Places, cannot pay</th><th data-field="profit_y1">Profit yr 1</th><th data-field="profit_seg">Profit yr 5, segment</th><th data-field="profit_low">Profit yr 5, low-sens.</th><th data-field="shortfall">Worst-case gap</th></tr></thead>
+            <tbody data-draw="compare"></tbody>
+          </table>
+          <p class="pb-note">▲ ▼ against the recommendation. Paying patients and places: selected scenario.</p>
+        </div>
+      </div>
+      <div class="pb-panel" id="panel-heat">
+        <h2>Profit sensitivity, year 5 ($M)</h2>
+        <div class="pb-body pb-tw">
+          <table class="pb-table pb-heat" id="table-heat" data-source="heat">
+            <thead><tr><th>Price</th><th>350</th><th>400</th><th class="h-plan">450 plan</th><th>500</th><th>550</th></tr></thead>
+            <tbody data-draw="heat"></tbody>
+          </table>
+          <p class="pb-note">Columns: year-5 plan volume at $50,000. Gold outline: recommendation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-page" id="drivers" hidden="">
+    <div class="pb-panel">
+      <h2>What moves the price, and what only moves the profit</h2>
+      <div class="pb-body">
+        <p class="pb-note">Range of results with one assumption at its limits, the others at base. Costs move profit, not price. Demand and capacity move price.</p>
+        <ul class="pb-legend">
+          <li><i data-sw="navy"></i>Profit-maximizing price, segment demand ($k)</li>
+          <li><i data-sw="teal"></i>Year-5 CABG profit at $45,000 ($M)</li>
+        </ul>
+        <div class="pb-chart" style="min-height:420px" data-draw="drivers" data-source="drivers" role="img" aria-label="For each assumption, the range of the best price and of year-5 profit"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-page" id="mission" hidden="">
+    <div class="pb-grid2">
+      <div class="pb-panel">
+        <h2>Who uses the 600 places in year 5</h2>
+        <div class="pb-body">
+          <ul class="pb-legend">
+            <li><i data-sw="navy"></i>Paying patients</li>
+            <li><i data-sw="gold"></i>Reserved for patients who cannot pay</li>
+            <li><i data-sw="grey"></i>Free places</li>
+          </ul>
+          <div class="pb-chart sm" data-draw="places" data-source="compare" role="img" aria-label="Use of the 600 yearly places for each option"></div>
+          <p class="pb-note">Above 500 paying patients, extra demand is turned away.</p>
+        </div>
+      </div>
+      <div class="pb-panel">
+        <h2>Trade-offs</h2>
+        <div class="pb-body">
+          <ul class="pb-list">
+            <li><b>Price stickiness.</b> Rates hard to raise after insurer contracts (p. 10).</li>
+            <li><b>Unsigned demand.</b> Volume depends on unsigned contracts and on JCI accreditation in 2015 (p. 9).</li>
+            <li><b>Partner conflict.</b> Ascension rates with Caribbean insurers (p. 8).</li>
+            <li><b>Mission and capacity.</b> The reserve turns away a few paying patients in year 5.</li>
+            <li><b>Package risk.</b> Complication costs stay with HCCI.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pb-panel">
+      <h2>Signals to reconsider the price</h2>
+      <div class="pb-body pb-tw">
+        <table class="pb-table text" id="table-triggers" data-source="triggers" data-row-key="signal">
+          <thead><tr><th data-field="signal">Signal</th><th data-field="threshold">Threshold</th><th data-field="action">Response</th></tr></thead>
+          <tbody data-draw="triggers"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-page" id="assumptions" hidden="">
+    <div class="pb-panel">
+      <h2>Assumptions and sources</h2>
+      <div class="pb-body pb-tw">
+        <table class="pb-table text" id="table-ledger" data-source="ledger" data-row-key="assumption">
+          <thead><tr><th data-field="assumption">Assumption</th><th data-field="value">Value</th><th data-field="case_gives">Case evidence</th><th data-field="where">Page</th><th data-field="we_added">Added assumption</th></tr></thead>
+          <tbody data-draw="ledger"></tbody>
+        </table>
+      </div>
+    </div>
+    <details class="pb-foot" id="method">
+      <summary>Method<span class="pb-acc-hint">Formulas and data</span></summary>
+      <p>CABG profit = (price − $2,000) × paying patients − 30% of fixed costs ($10M staff, $4M overhead, $6.56M capital: $70M at 8% over 25 years). Paying patients = demand, up to 600 places minus reserved places. Demand calibrated on the plan: about 200 cases (year 1) and 450 (year 5) at around $50,000 (p. 10). Segment scenario: 150 Caymanian, 200 US, 100 Caribbean insured patients, falling linearly to zero at $102,000, $76,000 and $80,000. Low-sensitivity scenario: elasticity 0.8 at $50,000. Values recomputed in the browser with the formulas of the Python model in Sources. 2014 dollars.</p>
+    </details>
+  </section>
+
+  <nav class="pb-tabs" role="tablist" aria-label="Report pages">
+    <button type="button" class="pb-tab" role="tab" aria-selected="true" aria-controls="overview" data-text="Overview" data-tab="overview"><span class="tab-label">Overview</span></button>
+    <button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="drivers" data-text="Price drivers" data-tab="drivers"><span class="tab-label">Price drivers</span></button>
+    <button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="mission" data-text="Mission and risks" data-tab="mission"><span class="tab-label">Mission and risks</span></button>
+    <button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="assumptions" data-text="Assumptions" data-tab="assumptions"><span class="tab-label">Assumptions</span></button>
+  </nav>
+
+</div>
+
+<script>
+dash.calc('model', {
+  inputs: ['assumptions'],
+  title: 'Pricing model, recomputed for the levers',
+  description: 'HCCI CABG model for the recommendation and for the selected price, reserve, scenario and year.',
+  fn: (assumptions) => {
+  if (!assumptions || !assumptions.length) return [];
+  const a = assumptions[0];
+  const prm = dash.params();
+  const num = (v, d) => (v === undefined || v === null || v === '' || isNaN(Number(v)) ? d : Number(v));
+  const scen = prm.scen === 'low' ? 'low' : 'seg';
+  const yr = num(prm.yr, 5) === 1 ? 1 : 5;
+  const sel = { price: num(prm.price, a.proposal_price), reserve: num(prm.reserve, a.proposal_reserve) };
+  const prop = { price: a.proposal_price, reserve: a.proposal_reserve };
+
+  // Modello HCCI (stesse formule di hcci_model.py)
+  const annuity = a.capex * a.rate / (1 - Math.pow(1 + a.rate, -a.life));
+  const fixedTotal = a.staff + a.oh + annuity;
+  const FC = fixedTotal * a.share;
+  const plan = (y) => a.q1 + (a.q5 - a.q1) * (y - 1) / 4;
+  const demand = (P, y, s, q5) => {
+    const Q5 = q5 ?? a.q5;
+    const pv = a.q1 + (Q5 - a.q1) * (y - 1) / 4;
+    if (s === 'low') { const Pc = a.ref * (1 + 1 / a.e); return Math.max(0, pv * (Pc - P) / (Pc - a.ref)); }
+    const k = pv / Q5, foreign = Q5 - a.cay;
+    const line = (V, Pc) => (Pc > a.ref ? V * Math.max(0, (Pc - P) / (Pc - a.ref)) : 0);
+    const cay = Math.min(line(a.cay * k, a.cay_alt), a.cay * k);
+    const us = line(foreign * (1 - a.car_share) * k, a.us_alt - a.travel);
+    const car = line(foreign * a.car_share * k, a.car_alt);
+    return cay + us + car;
+  };
+  const run = (P, reserve, y, s, q5) => {
+    const Q = demand(P, y, s, q5);
+    const sub = Math.min(reserve, a.cap);          // posti riservati, ipotesi: vengono riempiti
+    const pay = Math.min(Q, a.cap - sub);          // i paganti usano la capacita' restante
+    const free = a.cap - pay - sub;
+    const profit = (P - a.cv) * pay - FC;
+    return { Q, pay, sub, free, profit, turned: Math.max(0, Q - pay), revenue: P * pay, varcost: a.cv * pay,
+             full: pay + sub > 0 ? a.cv + FC / (pay + sub) : null, be: P > a.cv ? Math.ceil(FC / (P - a.cv)) : null };
+  };
+  const best = (reserve, s) => { let b = { p: 0, v: -Infinity }; for (let p = 10000; p <= 150000; p += 500) { const v = run(p, reserve, 5, s).profit; if (v >= b.v) b = { p, v }; } return b; };
+  const shortfall = (P, reserve) => Math.max(...['seg', 'low'].map((s) => best(reserve, s).v - run(P, reserve, 5, s).profit));
+
+  const rows = [];
+  const kpi = (c) => {
+    const r = run(c.price, c.reserve, yr, scen), r5 = run(c.price, c.reserve, 5, scen), other = run(c.price, c.reserve, 5, scen === 'seg' ? 'low' : 'seg');
+    return { price: c.price, paying: Math.round(r.pay), places_poor: Math.round(r.sub + r.free), reserved: Math.round(r.sub), free: Math.round(r.free),
+             turned_away: Math.round(r.turned), profit: Math.round(r.profit), profit_y5: Math.round(r5.profit), profit_y5_other: Math.round(other.profit),
+             profit_seg: Math.round(run(c.price, c.reserve, 5, 'seg').profit), profit_low: Math.round(run(c.price, c.reserve, 5, 'low').profit),
+             gap_seg: Math.round(best(c.reserve, 'seg').v - run(c.price, c.reserve, 5, 'seg').profit), gap_low: Math.round(best(c.reserve, 'low').v - run(c.price, c.reserve, 5, 'low').profit),
+             save_pct: Math.round((a.us_alt - a.travel - c.price) / a.us_alt * 1000) / 10,
+             shortfall: Math.round(shortfall(c.price, c.reserve)), save_us: a.us_alt - a.travel - c.price, breakeven: r.be,
+             revenue: Math.round(r.revenue), varcost: Math.round(r.varcost), fixed: Math.round(FC), full_cost: Math.round(r.full) };
+  };
+  const kp = kpi(prop), ks = kpi(sel);
+  Object.keys(kp).forEach((m) => rows.push({ kind: 'kpi', metric: m, proposal: kp[m], selection: ks[m], delta: ks[m] - kp[m] }));
+  const bs = best(sel.reserve, 'seg'), bl = best(sel.reserve, 'low');
+  rows.push({ kind: 'peak', metric: 'seg', proposal: bs.p, selection: Math.round(bs.v), delta: 0 });
+  rows.push({ kind: 'peak', metric: 'low', proposal: bl.p, selection: Math.round(bl.v), delta: 0 });
+  for (let p = 30000; p <= 70000; p += 500) {
+    rows.push({ kind: 'curve', metric: String(p), proposal: Math.round(run(p, sel.reserve, 5, 'seg').profit), selection: Math.round(run(p, sel.reserve, 5, 'low').profit), delta: Math.round(run(p, sel.reserve, 5, scen).pay) });
+  }
+  for (const p of [40000, 42500, 45000, 47500, 50000, 55000]) for (const q of [350, 400, 450, 500, 550]) {
+    rows.push({ kind: 'heat', metric: p + '|' + q, proposal: p, selection: Math.round(run(p, sel.reserve, 5, scen, q).profit), delta: q });
+  }
+  const named = [['Recommended', prop.price, prop.reserve], ['Selected', sel.price, sel.reserve], ['Plan in the case', 50000, prop.reserve],
+    ['Smallest worst-case loss', 50500, prop.reserve], ['Low-sensitivity peak', 57500, prop.reserve], ['Lower price', 40000, prop.reserve]];
+  for (const [name, P, R] of named) {
+    const r1 = run(P, R, 1, 'seg'), s5 = run(P, R, 5, 'seg'), l5 = run(P, R, 5, 'low'), c5 = run(P, R, 5, scen);
+    rows.push({ kind: 'compare', metric: name, price: P, reserve: R, paying: Math.round(c5.pay), reserved: Math.round(c5.sub), free: Math.round(c5.free),
+                turned_away: Math.round(c5.turned), places_poor: Math.round(c5.sub + c5.free), profit_y1: Math.round(r1.profit),
+                profit_seg: Math.round(s5.profit), profit_low: Math.round(l5.profit), shortfall: Math.round(shortfall(P, R)) });
+  }
+  return rows;
+},
+});
+dash.calc('kpis', { inputs: ['model'], title: 'Headline measures', description: 'Headline measures for the recommendation and the selection, with the difference.',
+  fn: (model) => model.filter((r) => r.kind === 'kpi').map((r) => ({ metric: r.metric, proposal: r.proposal, selection: r.selection, delta: r.delta })) });
+dash.calc('curve', { inputs: ['model'], title: 'Year-5 profit by price', description: 'Year-5 CABG profit at each price in both demand scenarios, with paying patients in the chosen scenario.',
+  fn: (model) => model.filter((r) => r.kind === 'curve').map((r) => ({ price: Number(r.metric), profit_seg: r.proposal, profit_low: r.selection, paying: r.delta })) });
+dash.calc('peaks', { inputs: ['model'], title: 'Best price in each scenario', description: 'The price with the highest year-5 CABG profit in each demand scenario.',
+  fn: (model) => model.filter((r) => r.kind === 'peak').map((r) => ({ scenario: r.metric, price: r.proposal, profit: r.selection })) });
+dash.calc('heat', { inputs: ['model'], title: 'Profit by price and plan volume', description: 'Year-5 CABG profit for six prices and five plan volumes, in the chosen scenario.',
+  fn: (model) => model.filter((r) => r.kind === 'heat').map((r) => ({ price: r.proposal, volume: r.delta, profit: r.selection })) });
+dash.calc('compare', { inputs: ['model'], title: 'Options compared', description: 'Recommendation, selection and four reference prices, with year-1 and year-5 results.',
+  fn: (model) => model.filter((r) => r.kind === 'compare').map((r) => ({ name: r.metric, price: r.price, reserve: r.reserve, paying: r.paying, reserved: r.reserved, free: r.free, turned_away: r.turned_away, places_poor: r.places_poor, profit_y1: r.profit_y1, profit_seg: r.profit_seg, profit_low: r.profit_low, shortfall: r.shortfall })) });
+
+window.PB = {
+  C: { navy: 'var(--pb-navy)', teal: 'var(--pb-teal)', gold: 'var(--pb-gold)', ink: 'var(--pb-ink)', grey: 'var(--pb-grey)', good: 'var(--pb-good)', bad: 'var(--pb-bad)', grid: 'var(--pb-grid)', muted: 'var(--pb-muted)' },
+  F: {
+    int: (v) => d3.format(',.0f')(v),
+    usd: (v) => (v < 0 ? '−' : '') + '$' + d3.format(',.0f')(Math.abs(v)),
+    absusd: (v) => '$' + d3.format(',.0f')(Math.abs(v)),
+    m: (v) => (v < 0 ? '−' : '') + '$' + d3.format(',.2f')(Math.abs(v) / 1e6) + 'M',
+    sm: (v) => (v > 0 ? '+' : v < 0 ? '−' : '±') + '$' + d3.format(',.2f')(Math.abs(v) / 1e6) + 'M',
+    sint: (v) => (v > 0 ? '+' : v < 0 ? '−' : '±') + d3.format(',.0f')(Math.abs(v)),
+    pct: (v) => d3.format('.1f')(v) + '%',
+  },
+  row: (id, metric) => { const d = dash.data(id); return d.status === 'ok' && Array.isArray(d.data) ? d.data.find((r) => r.metric === metric) : null; },
+};
+</script>
+
+<script>
+// Leve, slicer, preset e schede: solo ascolto, valori, classi e hidden.
+const pbSet = (o) => dash.setParams(o);
+document.querySelectorAll('#verdict').forEach((el) => el.addEventListener('animationend', (e) => { if (e.animationName === 'pb-pulse') el.classList.remove('pb-pulse'); }));
+document.querySelectorAll('#pb-price').forEach((el) => el.addEventListener('input', () => pbSet({ price: Number(el.value) })));
+document.querySelectorAll('#pb-reserve').forEach((el) => el.addEventListener('input', () => pbSet({ reserve: Number(el.value) })));
+// Dropdown dei filtri: listbox accessibile, si apre e si chiude dal pulsante
+const ddClose = (dd, focusBtn) => {
+  dd.classList.remove('is-open');
+  dd.querySelectorAll('.pb-dd-btn').forEach((b) => { b.setAttribute('aria-expanded', 'false'); if (focusBtn) b.focus(); });
+};
+const ddOpen = (dd) => {
+  document.querySelectorAll('.pb-dd.is-open').forEach((o) => { if (o !== dd) ddClose(o, false); });
+  dd.classList.add('is-open');
+  dd.querySelectorAll('.pb-dd-btn').forEach((b) => b.setAttribute('aria-expanded', 'true'));
+  const cur = dd.querySelector('li[aria-selected="true"]') || dd.querySelector('li');
+  if (cur) cur.focus();
+};
+const ddPick = (dd, li) => {
+  const v = li.dataset.val;
+  pbSet(dd.dataset.dd === 'yr' ? { yr: Number(v) } : { scen: v });
+  ddClose(dd, true);
+};
+document.querySelectorAll('.pb-dd').forEach((dd) => {
+  dd.querySelectorAll('.pb-dd-btn').forEach((b) => {
+    b.addEventListener('click', () => (dd.classList.contains('is-open') ? ddClose(dd, false) : ddOpen(dd)));
+    b.addEventListener('keydown', (e) => { if (['ArrowDown', 'ArrowUp'].includes(e.key)) { e.preventDefault(); ddOpen(dd); } });
+  });
+  dd.querySelectorAll('li[role="option"]').forEach((li) => {
+    li.addEventListener('click', () => ddPick(dd, li));
+    li.addEventListener('keydown', (e) => {
+      const items = [...dd.querySelectorAll('li[role="option"]')], i = items.indexOf(li);
+      if (e.key === 'ArrowDown') { e.preventDefault(); items[Math.min(items.length - 1, i + 1)].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); items[Math.max(0, i - 1)].focus(); }
+      else if (e.key === 'Home') { e.preventDefault(); items[0].focus(); }
+      else if (e.key === 'End') { e.preventDefault(); items[items.length - 1].focus(); }
+      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ddPick(dd, li); }
+      else if (e.key === 'Escape') { e.preventDefault(); ddClose(dd, true); }
+      else if (e.key === 'Tab') { ddClose(dd, false); }
+    });
+  });
+});
+document.addEventListener('pointerdown', (e) => {
+  document.querySelectorAll('.pb-dd.is-open').forEach((dd) => { if (!dd.contains(e.target)) ddClose(dd, false); });
+});
+document.querySelectorAll('[data-preset]').forEach((b) => b.addEventListener('click', () => {
+  const p = Number(b.dataset.preset);
+  pbSet(p === 45000 ? { price: 45000, reserve: 100 } : { price: p });
+}));
+document.querySelectorAll('[data-tab]').forEach((t) => t.addEventListener('click', () => {
+  document.querySelectorAll('.pb-page').forEach((s) => { s.hidden = s.id !== t.dataset.tab; });
+  document.querySelectorAll('[data-tab]').forEach((x) => x.setAttribute('aria-selected', x === t ? 'true' : 'false'));
+  dash.setLink(t.dataset.tab);
+}));
+const pbHash = (location.hash || '').slice(1);
+if (['drivers', 'mission', 'assumptions'].includes(pbHash)) document.querySelectorAll(`[data-tab="${pbHash}"]`).forEach((t) => t.click());
+
+dash.onData(() => {
+  const C = window.PB.C, prm = dash.params();
+  const price = Number(prm.price ?? 45000), reserve = Number(prm.reserve ?? 100);
+  const k = (m) => window.PB.row('kpis', m);
+  const pp = k('price'), pr = k('reserved');
+  const propPrice = pp ? pp.proposal : 45000, propRes = pr ? pr.proposal : 100;
+  const offP = price !== propPrice, offR = reserve !== propRes;
+  document.querySelectorAll('#pb-price').forEach((el) => { if (document.activeElement !== el) el.value = price; });
+  document.querySelectorAll('#pb-reserve').forEach((el) => { if (document.activeElement !== el) el.value = reserve; });
+  const ddCur = { scen: prm.scen === 'low' ? 'low' : 'seg', yr: String(Number(prm.yr ?? 5) === 1 ? 1 : 5) };
+  document.querySelectorAll('.pb-dd').forEach((dd) => {
+    const cur = ddCur[dd.dataset.dd];
+    dd.querySelectorAll('[data-dd-label]').forEach((sp) => sp.classList.toggle('is-current', sp.dataset.ddLabel === cur));
+    dd.querySelectorAll('li[role="option"]').forEach((li) => li.setAttribute('aria-selected', li.dataset.val === cur ? 'true' : 'false'));
+  });
+  document.querySelectorAll('[data-lever="price"]').forEach((el) => el.classList.toggle('is-off', offP));
+  document.querySelectorAll('[data-lever="reserve"]').forEach((el) => el.classList.toggle('is-off', offR));
+  document.querySelectorAll('[data-on="price"]').forEach((el) => { el.hidden = offP; });
+  document.querySelectorAll('[data-off="price"]').forEach((el) => { el.hidden = !offP; });
+  document.querySelectorAll('[data-on="reserve"]').forEach((el) => { el.hidden = offR; });
+  document.querySelectorAll('[data-off="reserve"]').forEach((el) => { el.hidden = !offR; });
+  const markAt = { price: propPrice, reserve: propRes };
+  document.querySelectorAll('[data-mark]').forEach((el) => {
+    const lo = Number(el.dataset.min), hi = Number(el.dataset.max);
+    el.style.left = `calc(${((markAt[el.dataset.mark] - lo) / (hi - lo)) * 100}% + ${9 - 18 * ((markAt[el.dataset.mark] - lo) / (hi - lo))}px)`;
+  });
+  document.querySelectorAll('[data-preset]').forEach((b) => {
+    const p = Number(b.dataset.preset);
+    b.setAttribute('aria-pressed', p === price && (p !== 45000 || reserve === propRes) ? 'true' : 'false');
+  });
+  document.querySelectorAll('[data-v]').forEach((el) => {
+    const v = el.dataset.v;
+    el.hidden = !({ same: !offP && !offR, off: offP || offR, hint: !offP && !offR, higher: price > propPrice, lower: price < propPrice, resless: !offP && reserve < propRes, resmore: !offP && reserve > propRes })[v];
+  });
+  document.querySelectorAll('#verdict').forEach((el) => {
+    el.classList.toggle('is-off', offP || offR);
+    if (window.PB_wasOff && !offP && !offR) el.classList.add('pb-pulse');
+  });
+  window.PB_wasOff = offP || offR;
+  document.querySelectorAll('[data-kcard]').forEach((el) => {
+    const r = k(el.dataset.kcard);
+    el.classList.toggle('is-prop', !!r && Math.abs(r.delta) < 0.5);
+    el.classList.toggle('is-off', !!r && Math.abs(r.delta) >= 0.5);
+  });
+  const sw = { navy: C.navy, teal: C.teal, gold: C.gold, ink: C.ink, grey: C.grey };
+  document.querySelectorAll('[data-sw]').forEach((i) => { i.style.background = sw[i.dataset.sw]; i.style.color = sw[i.dataset.sw]; });
+});
+</script>
+
+<script>
+// Card KPI e numeri nel testo.
+dash.draw('kval', (el) => { const r = window.PB.row('kpis', el.dataset.metric); el.classList.toggle('dash-skeleton', dash.data('kpis').status === 'loading'); el.textContent = r ? window.PB.F[el.dataset.fmt](r.selection) : '—'; });
+dash.draw('kprop', (el) => { const r = window.PB.row('kpis', el.dataset.metric); el.textContent = r ? window.PB.F[el.dataset.fmt](r.proposal) : '—'; });
+dash.draw('lval', (el) => { const r = window.PB.row('kpis', el.dataset.metric); el.textContent = r ? window.PB.F[el.dataset.fmt](r.selection) : '—'; });
+dash.draw('vnum', (el) => { const r = window.PB.row('kpis', el.dataset.metric); el.textContent = r ? window.PB.F[el.dataset.fmt](r[el.dataset.col]) : '—'; });
+dash.draw('kdelta', (el) => {
+  const r = window.PB.row('kpis', el.dataset.metric);
+  if (!r) { el.textContent = '—'; el.className = 'k-delta'; return; }
+  const v = r.delta, g = el.dataset.good;
+  if (Math.abs(v) < 0.5) { el.textContent = '= recommended'; el.className = 'k-delta k-eq'; return; }
+  const better = g === 'up' ? v > 0 : g === 'down' ? v < 0 : null;
+  const f = el.dataset.fmt === 'm' ? 'sm' : 'sint';
+  const txt = el.dataset.fmt === 'usd' ? (v > 0 ? '+' : '−') + '$' + d3.format(',.0f')(Math.abs(v)) : window.PB.F[f](v);
+  el.textContent = (better === null ? '' : better ? '▲ ' : '▼ ') + txt + ' vs recommended';
+  el.className = 'k-delta ' + (better === null ? 'k-neu' : better ? 'k-up' : 'k-down');
+});
+
+</script>
+
+<script>
+// Grafico: profitto anno 5 per prezzo.
+dash.draw('curve', (el) => {
+  const c = dash.data('curve'), pk = dash.data('peaks'), C = window.PB.C;
+  if (c.status !== 'ok' || !c.data || !c.data.length) { el.replaceChildren(); el.textContent = c.status === 'error' ? 'Failed to load' : '—'; return; }
+  el.replaceChildren();
+  const prm = dash.params(), scen = prm.scen === 'low' ? 'low' : 'seg';
+  const pr = window.PB.row('kpis', 'price'), prop = pr ? pr.proposal : 45000, sel = pr ? pr.selection : 45000;
+  const rows = c.data.map((r) => ({ p: +r.price, s: +r.profit_seg, l: +r.profit_low, n: +r.paying }));
+  const W = Math.max(280, el.clientWidth || 600), H = 290, m = { t: 34, r: 14, b: 32, l: 52 };
+  const x = d3.scaleLinear().domain(d3.extent(rows, (r) => r.p)).range([m.l, W - m.r]);
+  const y = d3.scaleLinear().domain([Math.min(0, d3.min(rows, (r) => Math.min(r.s, r.l))), d3.max(rows, (r) => Math.max(r.s, r.l)) * 1.08]).nice().range([H - m.b, m.t]);
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Year-5 profit by price');
+  svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat((v) => '$' + d3.format(',.0f')(v / 1e6) + 'M').tickSize(-(W - m.l - m.r)))
+    .call((g) => g.select('.domain').remove()).call((g) => g.selectAll('line').style('stroke', C.grid));
+  svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(W < 420 ? 4 : 8).tickFormat((v) => '$' + v / 1000 + 'k').tickSizeOuter(0))
+    .call((g) => g.select('.domain').style('stroke', C.grey)).call((g) => g.selectAll('line').style('stroke', C.grey));
+  svg.append('rect').attr('x', x(prop) - 7).attr('width', 14).attr('y', m.t - 4).attr('height', H - m.b - m.t + 4).style('fill', C.gold).style('opacity', 0.18);
+  svg.append('line').attr('x1', x(prop)).attr('x2', x(prop)).attr('y1', m.t - 4).attr('y2', H - m.b).style('stroke', C.gold).style('stroke-width', 2);
+  const line = (f) => d3.line().x((r) => x(r.p)).y((r) => y(r[f]));
+  [['l', C.teal, scen === 'low'], ['s', C.navy, scen === 'seg']].forEach(([f, col, on]) => {
+    svg.append('path').datum(rows).attr('d', line(f)).style('fill', 'none').style('stroke', col).style('stroke-width', on ? 3.8 : 2.8).style('opacity', on ? 1 : 0.6).style('stroke-dasharray', f === 'l' ? '7 4' : null);
+  });
+  const at = (p) => rows.reduce((b, r) => (Math.abs(r.p - p) < Math.abs(b.p - p) ? r : b), rows[0]);
+  const rp = at(prop), cur = scen === 'low' ? 'l' : 's';
+  svg.append('path').attr('d', d3.symbol(d3.symbolDiamond, 110)()).attr('transform', `translate(${x(prop)},${y(rp[cur])})`).style('fill', C.gold).style('stroke', C.ink).style('stroke-width', 1);
+  const lt = svg.append('g').attr('transform', `translate(${x(prop)},${m.t - 14})`);
+  lt.append('text').attr('text-anchor', x(prop) > W - 120 ? 'end' : 'middle').attr('class', 't-gold').text('Recommended $' + d3.format(',')(prop / 1000) + 'k');
+  if (Math.abs(sel - prop) > 1) {
+    const rs = at(sel);
+    svg.append('line').attr('x1', x(sel)).attr('x2', x(sel)).attr('y1', m.t + 10).attr('y2', H - m.b).style('stroke', C.ink).style('stroke-width', 1.4).style('stroke-dasharray', '5 4');
+    svg.append('circle').attr('cx', x(sel)).attr('cy', y(rs[cur])).attr('r', 5).style('fill', '#FFFFFF').style('stroke', C.ink).style('stroke-width', 2);
+    const right = sel > prop;
+    svg.append('text').attr('x', x(sel) + (right ? 6 : -6)).attr('y', m.t + 6).attr('text-anchor', right ? 'start' : 'end').attr('class', 't-ink').text('Selected $' + d3.format(',.1~f')(sel / 1000) + 'k');
+  }
+  if (pk.status === 'ok' && pk.data) pk.data.forEach((r) => {
+    const col = r.scenario === 'seg' ? C.navy : C.teal;
+    svg.append('circle').attr('cx', x(r.price)).attr('cy', y(r.profit)).attr('r', 4).style('fill', col);
+    svg.append('text').attr('x', x(r.price)).attr('y', y(r.profit) + (r.scenario === 'seg' ? 16 : -8)).attr('text-anchor', 'middle').style('fill', col).text('best $' + d3.format(',.1~f')(r.price / 1000) + 'k');
+  });
+  const tip = d3.select(el).append('div').attr('class', 'pb-tip');
+  svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', W - m.l - m.r).attr('height', H - m.t - m.b).style('fill', 'transparent')
+    .on('mousemove', (ev) => {
+      const [mx] = d3.pointer(ev); const r = at(x.invert(mx));
+      tip.classed('is-on', true).selectAll('*').remove();
+      tip.append('b').text('$' + d3.format(',')(r.p));
+      tip.append('div').text('Segment: ' + window.PB.F.m(r.s));
+      tip.append('div').text('Low-sensitivity: ' + window.PB.F.m(r.l));
+      tip.append('div').text(d3.format(',')(r.n) + ' paying patients');
+      const px = x(r.p) / W * el.clientWidth;
+      tip.style('left', Math.max(0, Math.min(px + 12, el.clientWidth - 170)) + 'px').style('top', '40px');
+    })
+    .on('mouseleave', () => tip.classed('is-on', false));
+});
+
+// Grafico: dal fatturato al profitto.
+dash.draw('bridge', (el) => {
+  const C = window.PB.C, g = (m) => window.PB.row('kpis', m);
+  const rev = g('revenue'), vc = g('varcost'), fx = g('fixed'), pf = g('profit');
+  if (!rev || !vc || !fx || !pf) { el.replaceChildren(); el.textContent = '—'; return; }
+  el.replaceChildren();
+  const steps = [
+    { lab: 'Revenue', a: 0, b: rev.selection, pa: 0, pb: rev.proposal, col: C.navy },
+    { lab: 'Variable cost', a: rev.selection - vc.selection, b: rev.selection, pa: rev.proposal - vc.proposal, pb: rev.proposal, col: C.bad },
+    { lab: 'Fixed cost (30%)', a: rev.selection - vc.selection - fx.selection, b: rev.selection - vc.selection, pa: pf.proposal, pb: rev.proposal - vc.proposal, col: C.bad },
+    { lab: 'Profit', a: 0, b: pf.selection, pa: 0, pb: pf.proposal, col: C.teal },
+  ];
+  const W = Math.max(240, el.clientWidth || 360), H = 260, m = { t: 22, r: 8, b: 30, l: 44 };
+  const x = d3.scaleBand().domain(steps.map((s) => s.lab)).range([m.l, W - m.r]).padding(0.3);
+  const y = d3.scaleLinear().domain([Math.min(0, d3.min(steps, (s) => Math.min(s.a, s.b))), d3.max(steps, (s) => Math.max(s.b, s.pb)) * 1.12]).nice().range([H - m.b, m.t]);
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Revenue to profit bridge');
+  svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickFormat((v) => '$' + d3.format(',.0f')(v / 1e6) + 'M').tickSize(-(W - m.l - m.r)))
+    .call((q) => q.select('.domain').remove()).call((q) => q.selectAll('line').style('stroke', C.grid));
+  svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickSizeOuter(0)).call((q) => q.select('.domain').style('stroke', C.grey)).call((q) => q.selectAll('line').remove())
+    .call((q) => q.selectAll('text').style('font-size', W < 330 ? '9.5px' : '11px'));
+  steps.forEach((s, i) => {
+    svg.append('rect').attr('x', x(s.lab)).attr('width', x.bandwidth()).attr('y', y(Math.max(s.a, s.b))).attr('height', Math.max(1, Math.abs(y(s.a) - y(s.b)))).style('fill', s.col).style('opacity', i === 1 || i === 2 ? 0.85 : 1);
+    const val = i === 0 ? s.b : i === 3 ? s.b : -(s.b - s.a);
+    svg.append('text').attr('x', x(s.lab) + x.bandwidth() / 2).attr('y', y(Math.max(s.a, s.b)) - 5).attr('text-anchor', 'middle').attr('class', 't-ink').text(window.PB.F.m(val));
+    const py = y(i === 3 || i === 0 ? s.pb : s.pa);
+    svg.append('line').attr('x1', x(s.lab) - 3).attr('x2', x(s.lab) + x.bandwidth() + 3).attr('y1', py).attr('y2', py).style('stroke', C.gold).style('stroke-width', 2.5);
+    svg.append('path').attr('d', d3.symbol(d3.symbolDiamond, 50)()).attr('transform', `translate(${x(s.lab) + x.bandwidth() + 5},${py})`).style('fill', C.gold).style('stroke', C.ink).style('stroke-width', 0.8);
+  });
+});
+</script>
+
+<script>
+// Tabelle: confronto, sensibilita, soglie, assumptions.
+dash.draw('compare', (el) => {
+  const d = dash.data('compare');
+  if (d.status !== 'ok' || !d.data) { el.replaceChildren(); return; }
+  const F = window.PB.F, prop = d.data.find((r) => r.name === 'Recommended');
+  const cols = [['price', 'usd', 0], ['paying', 'int', 1], ['places_poor', 'int', 1], ['profit_y1', 'm', 1], ['profit_seg', 'm', 1], ['profit_low', 'm', 1], ['shortfall', 'm', -1]];
+  d3.select(el).selectAll('tr').data(d.data, (r) => r.name).join('tr')
+    .attr('data-key', (r) => encodeURIComponent(r.name))
+    .attr('class', (r) => (r.name === 'Recommended' ? 'r-prop' : r.name === 'Selected' ? 'r-sel' : ''))
+    .each(function (r) {
+      const cells = [{ t: r.name === 'Recommended' ? '◆ Recommended' : r.name, c: '' }].concat(cols.map(([f, fmt, dir]) => {
+        let c = '';
+        if (prop && r.name !== 'Recommended' && dir !== 0) { const dv = (r[f] - prop[f]) * dir; c = dv > 0.5 ? 'c-up' : dv < -0.5 ? 'c-down' : ''; }
+        return { t: F[fmt](r[f]), c };
+      }));
+      d3.select(this).selectAll('td').data(cells).join('td').attr('class', (q) => q.c).text((q) => q.t);
+    });
+});
+
+dash.draw('heat', (el) => {
+  const d = dash.data('heat');
+  if (d.status !== 'ok' || !d.data) { el.replaceChildren(); return; }
+  const prices = [...new Set(d.data.map((r) => r.price))].sort((a, b) => a - b), vols = [350, 400, 450, 500, 550];
+  const ext = d3.extent(d.data, (r) => r.profit);
+  const col = d3.scaleLinear().domain([ext[0], (ext[0] + ext[1]) / 2, ext[1]]).range(['#F7C6CC', '#F4F6F8', '#5CC6CF']);
+  d3.select(el).selectAll('tr').data(prices).join('tr').each(function (p) {
+    const cells = [{ t: (p === 45000 ? '◆ ' : '') + '$' + d3.format(',.1~f')(p / 1000) + 'k', s: null, c: '' }]
+      .concat(vols.map((v) => { const r = d.data.find((q) => q.price === p && q.volume === v); return { t: r ? d3.format(',.1f')(r.profit / 1e6) : '—', s: r ? col(r.profit) : null, c: p === 45000 && v === 450 ? 'h-prop' : '' }; }));
+    d3.select(this).selectAll('td').data(cells).join('td').attr('class', (q) => q.c).style('background', (q) => q.s).style('font-weight', p === 45000 ? 700 : 600).text((q) => q.t);
+  });
+});
+
+dash.draw('triggers', (el) => {
+  const d = dash.data('triggers');
+  if (d.status !== 'ok') { el.replaceChildren(); return; }
+  const fmtT = (r) => (r.threshold === null || r.threshold === undefined ? 'Any sign' : r.test + ' ' + (r.unit === 'dollars' ? '$' + d3.format(',')(r.threshold) : d3.format(',')(r.threshold) + (r.unit ? ' ' + r.unit : '')));
+  d3.select(el).selectAll('tr').data(d.data, (r) => r.signal).join('tr').attr('data-key', (r) => encodeURIComponent(r.signal))
+    .each(function (r) { d3.select(this).selectAll('td').data([r.signal, fmtT(r), r.action]).join('td').text((v) => v); });
+});
+
+dash.draw('ledger', (el) => {
+  const d = dash.data('ledger');
+  if (d.status !== 'ok') { el.replaceChildren(); return; }
+  d3.select(el).selectAll('tr').data(d.data, (r) => r.assumption).join('tr').attr('data-key', (r) => encodeURIComponent(r.assumption))
+    .each(function (r) {
+      d3.select(this).selectAll('td').data(['assumption', 'value', 'case_gives', 'where', 'we_added']).join('td').text((f) => r[f]);
+    });
+});
+</script>
+
+<script>
+// Pagina "Price drivers" e "Mission".
+dash.draw('drivers', (el) => {
+  const d = dash.data('drivers'), C = window.PB.C;
+  if (d.status !== 'ok' || !d.data.length) { el.replaceChildren(); el.textContent = d.status === 'error' ? 'Failed to load' : '—'; return; }
+  el.replaceChildren();
+  const rows = d.data.map((r) => ({ name: r.assumption, rng: r.range, pl: +r.price_low, ph: +r.price_high, pb: +r.price_base, fl: +r.profit_low, fh: +r.profit_high, fb: +r.profit_base }))
+    .sort((a, b) => (b.ph - b.pl) - (a.ph - a.pl) || (b.fh - b.fl) - (a.fh - a.fl));
+  const W = Math.max(300, el.clientWidth || 700), narrow = W < 680, rowH = narrow ? 64 : 32, labW = narrow ? 0 : Math.min(300, W * 0.32), top = 24;
+  const panelW = narrow ? W - 16 : (W - labW - 36) / 2, H = top + rows.length * rowH + 10;
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Effect of each assumption on price and profit');
+  const xp = d3.scaleLinear().domain([d3.min(rows, (r) => r.pl) - 1000, d3.max(rows, (r) => r.ph) + 1000]).range([0, panelW - 56]);
+  const xf = d3.scaleLinear().domain([d3.min(rows, (r) => r.fl) * 0.97, d3.max(rows, (r) => r.fh) * 1.02]).range([0, panelW - 56]);
+  const ox1 = narrow ? 8 : labW + 8, ox2 = narrow ? 8 : labW + panelW + 28;
+  if (!narrow) { svg.append('text').attr('x', ox1).attr('y', 12).attr('class', 't-ink').text('Best price ($k)'); svg.append('text').attr('x', ox2).attr('y', 12).attr('class', 't-ink').text('Year-5 profit ($M)'); }
+  rows.forEach((r, i) => {
+    const yb = top + i * rowH, gg = svg.append('g');
+    if (narrow) gg.append('text').attr('x', 8).attr('y', yb + 4).attr('class', 't-ink').text(r.name + ' (' + r.rng + ')');
+    else gg.append('text').attr('x', labW - 4).attr('y', yb + 14).attr('text-anchor', 'end').text(r.name + ' (' + r.rng + ')');
+    const bar = (ox, xs, lo, hi, base, col, fmt, yy) => {
+      gg.append('rect').attr('x', ox + xs(lo)).attr('y', yy).attr('width', Math.max(2, xs(hi) - xs(lo))).attr('height', 14).attr('rx', 2).style('fill', hi - lo > 1e-6 ? col : C.grey);
+      gg.append('line').attr('x1', ox + xs(base)).attr('x2', ox + xs(base)).attr('y1', yy - 3).attr('y2', yy + 17).style('stroke', C.gold).style('stroke-width', 2);
+      gg.append('text').attr('x', ox + xs(hi) + 6).attr('y', yy + 11).text(hi - lo > 1e-6 ? fmt(lo) + '–' + fmt(hi) : 'no effect');
+    };
+    bar(ox1, xp, r.pl, r.ph, r.pb, C.navy, (v) => d3.format(',.1~f')(v / 1000), narrow ? yb + 10 : yb + 4);
+    bar(ox2, xf, r.fl, r.fh, r.fb, C.teal, (v) => d3.format(',.1f')(v / 1e6), narrow ? yb + 32 : yb + 4);
+  });
+});
+
+dash.draw('places', (el) => {
+  const d = dash.data('compare'), C = window.PB.C;
+  if (d.status !== 'ok' || !d.data || !d.data.length) { el.replaceChildren(); el.textContent = '—'; return; }
+  el.replaceChildren();
+  const rows = d.data, W = Math.max(280, el.clientWidth || 600), narrow = W < 520, labW = narrow ? 110 : 190, rowH = 34;
+  const H = 8 + rows.length * rowH + 24;
+  const x = d3.scaleLinear().domain([0, 600]).range([labW, W - (narrow ? 50 : 110)]);
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Use of places by option');
+  svg.append('g').attr('transform', `translate(0,${H - 22})`).call(d3.axisBottom(x).tickValues([0, 100, 200, 300, 400, 500, 600]).tickSizeOuter(0)).call((q) => q.select('.domain').style('stroke', C.grey));
+  rows.forEach((r, i) => {
+    const y = 8 + i * rowH, isP = r.name === 'Recommended';
+    svg.append('text').attr('x', labW - 8).attr('y', y + 15).attr('text-anchor', 'end').attr('class', isP ? 't-gold' : r.name === 'Selected' ? 't-ink' : '')
+      .text((isP ? '◆ ' : '') + (narrow ? '$' + d3.format(',.1~f')(r.price / 1000) + 'k' : r.name + ' · $' + d3.format(',.1~f')(r.price / 1000) + 'k'));
+    let x0 = 0;
+    [[r.paying, C.navy], [r.reserved, C.gold], [r.free, C.grey]].forEach(([v, col]) => {
+      if (v <= 0) return;
+      svg.append('rect').attr('x', x(x0)).attr('y', y + 3).attr('width', Math.max(1, x(x0 + v) - x(x0))).attr('height', 18).style('fill', col);
+      if (x(x0 + v) - x(x0) > 28) svg.append('text').attr('x', x(x0) + 4).attr('y', y + 16).style('fill', col === C.navy ? '#FFFFFF' : C.ink).style('font-weight', 600).text(v);
+      x0 += v;
+    });
+    if (isP) svg.append('rect').attr('x', x(0) - 2).attr('y', y + 1).attr('width', x(600) - x(0) + 4).attr('height', 22).style('fill', 'none').style('stroke', C.gold).style('stroke-width', 2);
+    if (r.turned_away > 0) svg.append('text').attr('x', x(600) + 6).attr('y', y + 16).style('fill', C.bad).style('font-weight', 600).text('+' + r.turned_away + (narrow ? '' : ' turned away'));
+  });
+});
+</script>
+
+<script>window.dash.__render();</script>
+</body>
+</html>
