@@ -90,7 +90,7 @@
 
 /* Testata */
 .pb-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 16px; }
-.pb-top h1 { margin: 0; font-size: clamp(19px, 15px + 0.8vw, 25px); line-height: 1.2; font-weight: 700; color: var(--pb-head); letter-spacing: -0.01em; text-wrap: balance; }
+.pb-top h1 { margin: 0; font-size: clamp(19px, 15px + 0.8vw, 25px); line-height: 1.2; font-weight: 600; color: var(--pb-head); letter-spacing: -0.01em; text-wrap: balance; }
 .pb-top p { margin: 3px 0 0; font-size: 13.5px; line-height: var(--pb-lh-text); color: var(--pb-muted); max-width: 80ch; text-wrap: pretty; }
 .pb-slicers { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .pb-slicer { position: relative; display: flex; align-items: center; gap: 4px; background: var(--pb-panel); border: 1px solid var(--pb-line); border-radius: 4px; padding: 0 0 0 10px; min-height: var(--pb-hit);
@@ -121,7 +121,7 @@
 .pb-dd-list li[aria-selected="true"] { font-weight: 600; }
 .pb-dd-check { width: 14px; height: 14px; flex: none; color: var(--pb-navy); opacity: 0; transform: scale(.8); transition: opacity var(--pb-dur-in) var(--pb-ease-out), transform var(--pb-dur-in) var(--pb-ease-out); }
 .pb-dd-list li[aria-selected="true"] .pb-dd-check { opacity: 1; transform: none; }
-.pb-badge { background: var(--pb-gold); color: var(--pb-ink); font-size: 10.5px; font-weight: 700; letter-spacing: .06em; padding: 6px 9px; border-radius: 3px; text-transform: uppercase; line-height: 1; }
+.pb-badge { background: var(--pb-gold); color: var(--pb-ink); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; padding: 6px 9px; border-radius: 3px; text-transform: uppercase; line-height: 1; }
 
 /* KPI */
 .pb-kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
@@ -133,7 +133,7 @@
 .pb-kpi h3 { margin: 0; font-size: 12.5px; line-height: 1.25; min-height: calc(2 * 1.25em); font-weight: 600; color: var(--pb-ink);
              display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .pb-kpi svg.ic { width: 22px; height: 22px; color: var(--pb-navy); margin-top: -1px; }
-.pb-kpi .k-val { font-size: 26px; font-weight: 700; line-height: var(--pb-lh-num); letter-spacing: -0.01em; min-height: 1.1em; }
+.pb-kpi .k-val { font-size: 26px; font-weight: 600; line-height: var(--pb-lh-num); letter-spacing: -0.01em; min-height: 1.1em; }
 .pb-kpi .k-prop { font-size: 11.5px; line-height: var(--pb-lh-ui); color: var(--pb-muted); display: flex; align-items: center; gap: 6px; }
 .pb-kpi .k-prop i { flex: none; width: 8px; height: 8px; background: var(--pb-gold); transform: rotate(45deg); }
 .pb-kpi .k-delta { font-size: 12px; line-height: var(--pb-lh-ui); font-weight: 600; transition: color var(--pb-dur-in) var(--pb-ease-out); }
@@ -142,7 +142,7 @@
 /* Verdetto: struttura fissa a tre righe per evitare salti di layout */
 .pb-vbody { gap: 5px; padding: 10px 14px 12px; }
 .pb-verdict p { margin: 0; line-height: var(--pb-lh-text); max-width: 115ch; text-wrap: pretty; }
-.pb-verdict .v-title { font-weight: 700; color: var(--pb-head); }
+.pb-verdict .v-title { font-weight: 600; color: var(--pb-head); }
 .pb-verdict .v-hint { color: var(--pb-muted); }
 
 /* Griglie e pannelli */
@@ -158,7 +158,7 @@
 .pb-lever { display: grid; gap: 4px; }
 .pb-lever .l-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .pb-lever .l-name { font-weight: 600; line-height: var(--pb-lh-ui); }
-.pb-lever .l-val { font-weight: 700; padding: 3px 8px; border-radius: 3px; background: var(--pb-gold-soft); min-width: 5.5ch; text-align: right;
+.pb-lever .l-val { font-weight: 600; padding: 3px 8px; border-radius: 3px; background: var(--pb-gold-soft); min-width: 5.5ch; text-align: right;
                    transition: background-color var(--pb-dur-in) var(--pb-ease-out); }
 .pb-lever.is-off .l-val { background: var(--pb-teal-soft); }
 .pb-track { position: relative; height: 28px; --thumb: var(--pb-gold); }
@@ -187,7 +187,7 @@
 .pb-btn:active { transform: scale(.97); }
 .pb-btn:focus-visible { outline: 2px solid var(--pb-navy); outline-offset: 2px; }
 .pb-btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
-.pb-btn.gold { background: var(--pb-gold); border-color: var(--pb-gold); font-weight: 700; color: var(--pb-ink); }
+.pb-btn.gold { background: var(--pb-gold); border-color: var(--pb-gold); font-weight: 600; color: var(--pb-ink); }
 .pb-btn.gold:hover { background: color-mix(in oklab, var(--pb-gold) 88%, black); }
 .pb-btn[aria-pressed="true"] { background: var(--pb-head); color: #FFFFFF; border-color: var(--pb-head); }
 .pb-btn.gold[aria-pressed="true"] { background: var(--pb-gold); color: var(--pb-ink); box-shadow: inset 0 0 0 2px var(--pb-ink); }
@@ -203,7 +203,7 @@
 .pb-chart.tall { min-height: 420px; }
 .pb-chart svg text { font-family: inherit; font-size: 11px; fill: var(--pb-muted); }
 .pb-chart svg .t-ink { fill: var(--pb-ink); font-weight: 600; }
-.pb-chart svg .t-gold { fill: var(--pb-gold-ink); font-weight: 700; }
+.pb-chart svg .t-gold { fill: var(--pb-gold-ink); font-weight: 600; }
 .pb-tip { position: absolute; pointer-events: none; background: #FFFFFF; border: 1px solid var(--pb-line); box-shadow: 0 4px 12px rgba(16,24,40,.12); border-radius: 4px; padding: 6px 9px; font-size: 12px; line-height: 1.45; white-space: nowrap; z-index: 3; color: var(--pb-ink);
           opacity: 0; transform: scale(.95); transform-origin: top left; transition: opacity var(--pb-dur-out) var(--pb-ease-in), transform var(--pb-dur-out) var(--pb-ease-in); }
 .pb-tip.is-on { opacity: 1; transform: none; transition-duration: var(--pb-dur-in); transition-timing-function: var(--pb-ease-out); }
@@ -215,7 +215,7 @@
 .pb-table th:first-child, .pb-table td:first-child { text-align: left; }
 .pb-table td { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--pb-line); white-space: nowrap; transition: background-color var(--pb-dur-in) var(--pb-ease-out); }
 .pb-table tbody tr:hover td { background: #F6F8FB; }
-.pb-table tr.r-prop td { background: var(--pb-gold-soft); font-weight: 700; }
+.pb-table tr.r-prop td { background: var(--pb-gold-soft); font-weight: 600; }
 .pb-table tr.r-sel td { background: var(--pb-teal-soft); }
 .pb-table td.c-up { color: var(--pb-good); } .pb-table td.c-down { color: var(--pb-bad); }
 .pb-table td.c-up::before { content: "▲ "; font-size: .8em; } .pb-table td.c-down::before { content: "▼ "; font-size: .8em; }
@@ -233,10 +233,10 @@
           transition: color var(--pb-dur-in) var(--pb-ease-out), border-color var(--pb-dur-in) var(--pb-ease-out), background-color var(--pb-dur-in) var(--pb-ease-out); }
 .pb-tab > .tab-label, .pb-tab::after { grid-area: 1 / 1; }
 .pb-tab > .tab-label { font-weight: 500; }
-.pb-tab::after { content: attr(data-text); font-weight: 700; visibility: hidden; pointer-events: none; }
+.pb-tab::after { content: attr(data-text); font-weight: 600; visibility: hidden; pointer-events: none; }
 .pb-tab:hover { color: var(--pb-ink); background: #FAFAFB; }
 .pb-tab[aria-selected="true"] { color: var(--pb-ink); border-bottom-color: var(--pb-gold); background: #FAFAFB; }
-.pb-tab[aria-selected="true"] > .tab-label { font-weight: 700; }
+.pb-tab[aria-selected="true"] > .tab-label { font-weight: 600; }
 .pb-tab:focus-visible { outline: 2px solid var(--pb-navy); outline-offset: -2px; }
 .pb-tabnote { margin-left: auto; align-self: center; padding: 0 14px; font-size: 11.5px; color: var(--pb-muted); }
 .pb-page { display: grid; gap: 12px; }
@@ -279,115 +279,113 @@
   .pb *, .pb *::before, .pb *::after { transition-duration: 1ms !important; animation: none !important; }
 }
 
-/* ---------- Layout a schede, a schermo intero ---------- */
+/* ---------- Layout a schede (unslop pass) ---------- */
 [hidden] { display: none !important; }
 .pb-chart svg { display: block; }
-.pb-main { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
-.pb-pages, .pb-page { display: grid; gap: 10px; min-width: 0; }
-.pb-row2 { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
-.pb-method { max-width: none; }
-.pb-tabs { order: 0; }
+.pb-pages, .pb-page { display: grid; gap: 12px; min-width: 0; }
+.pb-row2, .pb-ov-main { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
+.pb-top { align-items: center; gap: 12px 24px; }
+.pb-brand { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.pb-top h1 { font-size: 20px; font-weight: 600; letter-spacing: 0; }
+.pb-top h1, .pb-sub, .pb-tab, .pb-dd-label, .pb-dd-btn { white-space: nowrap; }
+.pb-brand { min-width: 0; }
+.pb-sub { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--pb-gold-ink); }
+.pb-dia { width: 8px; height: 8px; background: var(--pb-gold); transform: rotate(45deg); }
+.pb-tabs { box-shadow: none; background: transparent; border-radius: 0; flex-wrap: nowrap; }
+.pb-tab { min-height: 36px; padding: 0 12px; border-radius: 4px 4px 0 0; }
+.pb-tab[aria-selected="true"] { background: var(--pb-panel); }
+.pb-slicers { margin-left: auto; }
+.pb-lever-body { justify-content: space-between; }
+.pb-tfill { flex: 1 1 auto; min-height: 0; display: flex; }
+.pb-tfill > table { height: 100%; }
+.pb-list-fill { gap: 0; max-width: none; }
+.pb-list-fill > li { padding: 8px 0; }
+.pb-list-fill > li + li { border-top: 1px solid var(--pb-line); }
+
+.pb-heat th { text-align: center; }
+.pb-heat th:first-child { text-align: left; }
+.pb-def { margin: 0; display: grid; gap: 12px; align-content: start; }
+.pb-def > div { display: grid; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--pb-line); }
+.pb-def > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.pb-def dt { font-size: 11.5px; font-weight: 600; color: var(--pb-ink); }
+.pb-def dd { margin: 0; font-size: 12px; line-height: 1.45; color: var(--pb-muted); font-variant-numeric: tabular-nums; }
 @media (min-width: 900px) {
-  .pb-main { grid-template-columns: 250px minmax(0, 1fr); align-items: start; }
-  .pb-row2 { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
-  .pb-row-even { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
-  .pb-row-mission { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
-  .pb-row-ledger { grid-template-columns: minmax(0, 2.7fr) minmax(0, 1fr); }
+  .pb-ov-main { grid-template-columns: 260px minmax(0, 1.55fr) minmax(0, 1fr); }
+  .pb-row2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pb-row-mission { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+  .pb-row-ledger { grid-template-columns: minmax(0, 2.6fr) minmax(0, 1fr); }
 }
-/* Schermi da laptop in su: tutto sta nella finestra, nessuno scroll di pagina */
+/* Laptop e monitor: ogni scheda occupa la finestra, nessuno scroll */
 @media (min-width: 1100px) and (min-height: 600px) {
-  .pb-app { box-sizing: border-box; height: 100vh; border-radius: 0; grid-template-rows: auto auto minmax(0, 1fr); gap: 8px; padding: 10px 12px; overflow: hidden; }
-  .pb-app .pb-top h1 { font-size: 19px; }
-  .pb-app .pb-top p { margin-top: 1px; font-size: 12px; }
-  .pb-main { min-height: 0; height: 100%; align-items: stretch; }
-  .pb-side { min-height: 0; display: flex; }
-  .pb-side > .pb-panel { flex: 1; }
+  .pb-app { box-sizing: border-box; height: 100vh; border-radius: 0; padding: 12px 16px 16px; gap: 12px; grid-template-rows: auto minmax(0, 1fr); overflow: hidden; }
+  .pb-top { flex-wrap: nowrap; border-bottom: 1px solid var(--pb-line); padding-bottom: 0; }
+  .pb-brand { flex-wrap: nowrap; padding-bottom: 8px; }
+  .pb-tabs { align-self: flex-end; }
+  .pb-slicers { padding-bottom: 8px; flex-wrap: nowrap; }
   .pb-pages { min-height: 0; height: 100%; }
-  .pb-page { min-height: 0; height: 100%; gap: 8px; }
+  .pb-page { min-height: 0; height: 100%; gap: 12px; }
   .pb-p-overview { grid-template-rows: auto auto minmax(0, 1fr); }
   .pb-p-comparison { grid-template-rows: auto minmax(0, 1fr); }
   .pb-p-single { grid-template-rows: minmax(0, 1fr); }
-  .pb-row2 { min-height: 0; height: 100%; gap: 8px; }
+  .pb-p-mission { grid-template-rows: auto minmax(0, 1fr); }
+  .pb-p-mission > .pb-row2 { height: auto; }
+  .pb-row2, .pb-ov-main { min-height: 0; height: 100%; }
   .pb-panel { min-height: 0; overflow: hidden; }
-  .pb-panel > h2 { padding: 6px 10px; font-size: 13px; }
-  .pb-body { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding: 8px 10px; }
+  .pb-panel > h2 { padding: 8px 12px; font-size: 13px; }
+  .pb-body { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 12px; padding: 12px 16px; }
   .pb-chart, .pb-chart.sm, .pb-chart.tall { flex: 1 1 0; min-height: 0 !important; overflow: hidden; }
-  .pb-kpis { gap: 8px; }
-  .pb-kpi { padding: 7px 10px 8px; gap: 2px; }
-  .pb-kpi h3 { font-size: 11.5px; }
-  .pb-kpi .k-val { font-size: 21px; }
-  .pb-vbody { padding: 7px 12px 8px; gap: 3px; }
-  .pb-verdict p { font-size: 12.5px; line-height: 1.4; }
-  .pb-table { font-size: 12px; }
-  .pb-table th { white-space: normal; padding: 5px 7px; font-size: 11px; vertical-align: bottom; }
-  .pb-table td { padding: 5px 7px; }
-  .pb-table.text td { font-size: 11.5px; line-height: 1.32; padding: 5px 7px; }
-  .pb-lever { gap: 2px; }
-  .pb-body .pb-btns { gap: 5px; }
-  .pb-tab { min-height: 38px; padding: 0 16px; }
+  .pb-kpis { gap: 12px; }
+  .pb-kpi { padding: 12px 16px; gap: 4px; }
+  .pb-kpi h3 { font-size: 12px; }
+  .pb-kpi .k-val { font-size: 24px; }
+  .pb-vbody { padding: 8px 16px 12px; gap: 4px; }
+  .pb-verdict p { font-size: 13px; line-height: 1.45; }
+  .pb-table { font-size: 12.5px; }
+  .pb-table th { white-space: normal; padding: 8px 12px; font-size: 11.5px; vertical-align: bottom; }
+  .pb-table td { padding: 8px 12px; }
+  .pb-table.text td { font-size: 12px; line-height: 1.4; padding: 8px 12px; vertical-align: middle; }
 }
-/* Finestre basse (portatili da 13", browser con molte barre): versione compatta */
-@media (min-width: 1100px) and (min-height: 600px) and (max-height: 720px) {
-  .pb-app { padding: 6px 10px; gap: 6px; }
-  .pb-app .pb-top h1 { font-size: 17px; }
-  .pb-app .pb-top p { display: none; }
-  .pb-tab { min-height: 34px; }
-  .pb-page, .pb-row2 { gap: 6px; }
-  .pb-kpi { padding: 5px 9px 6px; }
+/* Testata su una riga anche su schermi meno larghi */
+@media (max-width: 1560px) { .pb-dd-label { display: none; } .pb-top { column-gap: 16px; } .pb-tab { padding: 0 10px; } }
+@media (max-width: 1320px) { .pb-sub { display: none; } }
+/* Finestre basse: stessa struttura, spazi ridotti */
+@media (min-width: 1100px) and (min-height: 600px) and (max-height: 760px) {
+  .pb-app { padding: 8px 16px 12px; gap: 8px; }
+  .pb-top h1 { font-size: 18px; }
+  .pb-page, .pb-row2, .pb-ov-main, .pb-kpis { gap: 8px; }
+  .pb-kpi { padding: 8px 12px; }
   .pb-kpi h3 { min-height: 0; -webkit-line-clamp: 1; }
-  .pb-kpi .k-val { font-size: 19px; }
+  .pb-kpi .k-val { font-size: 20px; }
   .pb-kpi .k-prop, .pb-kpi .k-delta { font-size: 11px; }
-  .pb-vbody { padding: 5px 10px 6px; }
-  .pb-verdict p { font-size: 12px; line-height: 1.35; }
-  .pb-panel > h2 { padding: 5px 10px; font-size: 12.5px; }
-  .pb-body { padding: 6px 9px; gap: 6px; }
+  .pb-vbody { padding: 4px 12px 8px; gap: 2px; }
+  .pb-verdict p { font-size: 12px; line-height: 1.4; }
+  .pb-panel > h2 { padding: 4px 12px; font-size: 12.5px; }
+  .pb-body { padding: 8px 12px; gap: 8px; }
   .pb-table { font-size: 11.5px; }
-  .pb-table th { padding: 4px 6px; }
-  .pb-table td { padding: 3px 6px; }
-  .pb-table.text td { font-size: 11px; line-height: 1.28; padding: 3px 6px; }
+  .pb-table th { padding: 4px 8px; }
+  .pb-table td { padding: 4px 8px; }
+  .pb-table.text td { font-size: 11px; line-height: 1.3; padding: 4px 8px; }
+  .pb-def { gap: 8px; } .pb-def > div { padding-bottom: 8px; } .pb-def dd { font-size: 11px; }
   .pb-note { font-size: 11px; }
-  .pb-lever .l-state { min-height: 1.2em; }
+  .pb-tab { min-height: 32px; }
+  .pb-lever-body .pb-note { display: none; }
+  .pb-lever-body .pb-btn { min-height: 28px; }
+  .pb-lever .l-state { min-height: 0; }
+  .pb-track { height: 24px; }
 }
 </style>
 
 <div class="pb pb-app" lang="en">
   <header class="pb-top" id="header">
-    <div>
-      <h1>HCCI CABG pricing · recommended price $45,000</h1>
-      <p>◆ Gold = recommendation. Every value is compared with it.</p>
-    </div>
+    <div class="pb-brand"><h1>HCCI CABG pricing</h1><span class="pb-sub"><i class="pb-dia" aria-hidden="true"></i>Recommended price $45,000</span></div>
+    <nav class="pb-tabs" role="tablist" aria-label="Report pages"><button type="button" class="pb-tab" role="tab" aria-selected="true" aria-controls="overview" data-text="Overview" data-tab="overview"><span class="tab-label">Overview</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="comparison" data-text="Comparison" data-tab="comparison"><span class="tab-label">Comparison</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="drivers" data-text="Price drivers" data-tab="drivers"><span class="tab-label">Price drivers</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="mission" data-text="Mission and risks" data-tab="mission"><span class="tab-label">Mission and risks</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="assumptions" data-text="Assumptions" data-tab="assumptions"><span class="tab-label">Assumptions</span></button></nav>
     <div class="pb-slicers">
       <div class="pb-slicer pb-dd" data-dd="scen"><span class="pb-dd-label" id="pb-dd-scen-lbl">Demand Scenario</span><button type="button" class="pb-dd-btn" id="pb-dd-scen-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="pb-dd-scen-list" aria-labelledby="pb-dd-scen-lbl pb-dd-scen-btn"><span class="pb-dd-val"><span class="pb-dd-ghost" data-dd-label="seg">Segment (case prices)</span><span class="pb-dd-ghost" data-dd-label="low">Low-sensitivity (elasticity = 0.8)</span></span><svg class="pb-dd-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><ul class="pb-dd-list" id="pb-dd-scen-list" role="listbox" aria-labelledby="pb-dd-scen-lbl"><li role="option" id="pb-dd-scen-seg" data-val="seg" tabindex="-1" aria-selected="false"><span>Segment (case prices)</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li><li role="option" id="pb-dd-scen-low" data-val="low" tabindex="-1" aria-selected="false"><span>Low-sensitivity (elasticity 0.8)</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li></ul></div>
       <div class="pb-slicer pb-dd" data-dd="yr"><span class="pb-dd-label" id="pb-dd-yr-lbl">Year</span><button type="button" class="pb-dd-btn" id="pb-dd-yr-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="pb-dd-yr-list" aria-labelledby="pb-dd-yr-lbl pb-dd-yr-btn"><span class="pb-dd-val"><span class="pb-dd-ghost" data-dd-label="5">Year 5</span><span class="pb-dd-ghost" data-dd-label="1">Year 1</span></span><svg class="pb-dd-chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><ul class="pb-dd-list" id="pb-dd-yr-list" role="listbox" aria-labelledby="pb-dd-yr-lbl"><li role="option" id="pb-dd-yr-5" data-val="5" tabindex="-1" aria-selected="false"><span>Year 5</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li><li role="option" id="pb-dd-yr-1" data-val="1" tabindex="-1" aria-selected="false"><span>Year 1</span><svg class="pb-dd-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></li></ul></div>
     </div>
   </header>
-  <nav class="pb-tabs" role="tablist" aria-label="Report pages"><button type="button" class="pb-tab" role="tab" aria-selected="true" aria-controls="overview" data-text="Overview" data-tab="overview"><span class="tab-label">Overview</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="comparison" data-text="Comparison" data-tab="comparison"><span class="tab-label">Comparison</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="drivers" data-text="Price drivers" data-tab="drivers"><span class="tab-label">Price drivers</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="mission" data-text="Mission and risks" data-tab="mission"><span class="tab-label">Mission and risks</span></button><button type="button" class="pb-tab" role="tab" aria-selected="false" aria-controls="assumptions" data-text="Assumptions" data-tab="assumptions"><span class="tab-label">Assumptions</span></button></nav>
-  <div class="pb-main">
-    <aside class="pb-side"><div class="pb-panel" id="levers">
-        <h2>Pricing levers</h2>
-        <div class="pb-body">
-          <div class="pb-lever" id="lever-price" data-lever="price">
-            <div class="l-row"><span class="l-name">CABG price</span><span class="l-val" data-draw="lval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</span></div>
-            <div class="pb-track"><input type="range" id="pb-price" min="30000" max="70000" step="500" value="45000" aria-label="CABG price"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div>
-            <div class="l-state"><span class="l-on" data-on="price">◆ Recommended</span><span class="l-off" data-off="price" hidden="">Changed · recommendation at ◆</span></div>
-          </div>
-          <div class="pb-lever" id="lever-reserve" data-lever="reserve">
-            <div class="l-row"><span class="l-name">Places reserved for patients who cannot pay</span><span class="l-val" data-draw="lval" data-metric="reserved" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=reserved">—</span></div>
-            <div class="pb-track"><input type="range" id="pb-reserve" min="0" max="150" step="10" value="100" aria-label="Reserved places"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div>
-            <div class="l-state"><span class="l-on" data-on="reserve">◆ Recommended</span><span class="l-off" data-off="reserve" hidden="">Changed · recommendation at ◆</span></div>
-          </div>
-          <div class="pb-btns" role="group" aria-label="Quick comparisons">
-            <button type="button" class="pb-btn gold" aria-pressed="true" data-preset="45000">Recommended</button>
-            <button type="button" class="pb-btn" data-preset="50000">Plan $50k</button>
-            <button type="button" class="pb-btn" data-preset="50500">Worst-case $50.5k</button>
-            <button type="button" class="pb-btn" data-preset="57500">High $57.5k</button>
-            <button type="button" class="pb-btn" data-preset="40000">Low $40k</button>
-          </div>
-          <p class="pb-note">Capacity ≈ 600 CABGs a year (4 cardiac surgeries a day, p. 9). Reserved places are filled first.</p>
-        </div>
-      </div></aside>
-    <div class="pb-pages">
-      <section class="pb-page pb-p-overview" id="overview" role="tabpanel"><div class="pb-kpis">
+  <div class="pb-pages">
+    <section class="pb-page pb-p-overview" id="overview" role="tabpanel"><div class="pb-kpis">
       <article class="pb-kpi" id="kpi-price" data-kcard="price">
         <div class="k-head"><h3 title="CABG list price">CABG list price</h3><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"></path><circle cx="7.5" cy="8.5" r="1.5"></circle></svg></div>
         <div class="k-val dash-skeleton" data-draw="kval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</div>
@@ -436,7 +434,29 @@
       <p data-v="resless" hidden="">Fewer reserved places: year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>, places for patients who cannot pay <b data-draw="vnum" data-metric="places_poor" data-col="delta" data-fmt="sint" data-source="kpis" data-field="delta" data-where="metric=places_poor">—</b>.</p>
       <p data-v="resmore" hidden="">More reserved places: <b data-draw="vnum" data-metric="turned_away" data-col="selection" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=turned_away">—</b> paying patients turned away, year-5 profit <b data-draw="vnum" data-metric="profit_seg" data-col="delta" data-fmt="sm" data-source="kpis" data-field="delta" data-where="metric=profit_seg">—</b>.</p>
       </div>
-    </div><div class="pb-row2"><div class="pb-panel" id="panel-curve">
+    </div><div class="pb-ov-main"><div class="pb-panel" id="levers">
+        <h2>Pricing levers</h2>
+        <div class="pb-body pb-lever-body">
+          <div class="pb-lever" id="lever-price" data-lever="price">
+            <div class="l-row"><span class="l-name">CABG price</span><span class="l-val" data-draw="lval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</span></div>
+            <div class="pb-track"><input type="range" id="pb-price" min="30000" max="70000" step="500" value="45000" aria-label="CABG price"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div>
+            <div class="l-state"><span class="l-on" data-on="price">◆ Recommended</span><span class="l-off" data-off="price" hidden="">Changed · recommendation at ◆</span></div>
+          </div>
+          <div class="pb-lever" id="lever-reserve" data-lever="reserve">
+            <div class="l-row"><span class="l-name">Places reserved for patients who cannot pay</span><span class="l-val" data-draw="lval" data-metric="reserved" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=reserved">—</span></div>
+            <div class="pb-track"><input type="range" id="pb-reserve" min="0" max="150" step="10" value="100" aria-label="Reserved places"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div>
+            <div class="l-state"><span class="l-on" data-on="reserve">◆ Recommended</span><span class="l-off" data-off="reserve" hidden="">Changed · recommendation at ◆</span></div>
+          </div>
+          <div class="pb-btns" role="group" aria-label="Quick comparisons">
+            <button type="button" class="pb-btn gold" aria-pressed="true" data-preset="45000">Recommended</button>
+            <button type="button" class="pb-btn" data-preset="50000">Plan $50k</button>
+            <button type="button" class="pb-btn" data-preset="50500">Worst-case $50.5k</button>
+            <button type="button" class="pb-btn" data-preset="57500">High $57.5k</button>
+            <button type="button" class="pb-btn" data-preset="40000">Low $40k</button>
+          </div>
+          <p class="pb-note">Capacity ≈ 600 CABGs a year (4 cardiac surgeries a day, p. 9). Reserved places are filled first.</p>
+        </div>
+      </div><div class="pb-panel" id="panel-curve">
         <h2>Year-5 CABG profit at each price</h2>
         <div class="pb-body">
           <ul class="pb-legend">
@@ -458,7 +478,7 @@
           <p class="pb-note">Selected year and scenario. Subsidized patients pay the variable cost: no margin.</p>
         </div>
       </div></div></section>
-      <section class="pb-page pb-p-comparison" id="comparison" role="tabpanel" hidden><div class="pb-panel" id="panel-compare">
+    <section class="pb-page pb-p-comparison" id="comparison" role="tabpanel" hidden><div class="pb-panel" id="panel-compare">
         <h2>Scenario comparison</h2>
         <div class="pb-body">
           <table class="pb-table" id="table-compare" data-source="compare" data-row-key="name">
@@ -467,28 +487,17 @@
           </table>
           <p class="pb-note">▲ ▼ against the recommendation. Paying patients and places: selected scenario.</p>
         </div>
-      </div><div class="pb-row2 pb-row-even"><div class="pb-panel" id="panel-heat">
+      </div><div class="pb-panel" id="panel-heat">
         <h2>Profit sensitivity, year 5 ($M)</h2>
         <div class="pb-body">
-          <table class="pb-table pb-heat" id="table-heat" data-source="heat">
+          <div class="pb-tfill"><table class="pb-table pb-heat" id="table-heat" data-source="heat">
             <thead><tr><th>Price</th><th>350</th><th>400</th><th class="h-plan">450 plan</th><th>500</th><th>550</th></tr></thead>
             <tbody data-draw="heat"></tbody>
-          </table>
+          </table></div>
           <p class="pb-note">Columns: year-5 plan volume at $50,000. Gold outline: recommendation.</p>
         </div>
-      </div><div class="pb-panel">
-        <h2>Who uses the 600 places in year 5</h2>
-        <div class="pb-body">
-          <ul class="pb-legend">
-            <li><i data-sw="navy"></i>Paying patients</li>
-            <li><i data-sw="gold"></i>Reserved for patients who cannot pay</li>
-            <li><i data-sw="grey"></i>Free places</li>
-          </ul>
-          <div class="pb-chart sm" data-draw="places" data-source="compare" role="img" aria-label="Use of the 600 yearly places for each option"></div>
-          <p class="pb-note">Above 500 paying patients, extra demand is turned away.</p>
-        </div>
-      </div></div></section>
-      <section class="pb-page pb-p-single" id="drivers" role="tabpanel" hidden><div class="pb-panel">
+      </div></section>
+    <section class="pb-page pb-p-single" id="drivers" role="tabpanel" hidden><div class="pb-panel">
       <h2>What moves the price, and what only moves the profit</h2>
       <div class="pb-body">
         <p class="pb-note">Range of results with one assumption at its limits, the others at base. Costs move profit, not price. Demand and capacity move price.</p>
@@ -499,10 +508,10 @@
         <div class="pb-chart" style="min-height:420px" data-draw="drivers" data-source="drivers" role="img" aria-label="For each assumption, the range of the best price and of year-5 profit"></div>
       </div>
     </div></section>
-      <section class="pb-page pb-p-single" id="mission" role="tabpanel" hidden><div class="pb-row2 pb-row-mission"><div class="pb-panel">
+    <section class="pb-page pb-p-mission" id="mission" role="tabpanel" hidden><div class="pb-row2 pb-row-mission"><div class="pb-panel">
         <h2>Trade-offs</h2>
         <div class="pb-body">
-          <ul class="pb-list">
+          <ul class="pb-list pb-list-fill">
             <li><b>Price stickiness.</b> Rates hard to raise after insurer contracts (p. 10).</li>
             <li><b>Unsigned demand.</b> Volume depends on unsigned contracts and on JCI accreditation in 2015 (p. 9).</li>
             <li><b>Partner conflict.</b> Ascension rates with Caribbean insurers (p. 8).</li>
@@ -518,17 +527,37 @@
           <tbody data-draw="triggers"></tbody>
         </table>
       </div>
-    </div></div></section>
-      <section class="pb-page pb-p-single" id="assumptions" role="tabpanel" hidden><div class="pb-row2 pb-row-ledger"><div class="pb-panel">
+    </div></div><div class="pb-panel">
+        <h2>Who uses the 600 places in year 5</h2>
+        <div class="pb-body">
+          <ul class="pb-legend">
+            <li><i data-sw="navy"></i>Paying patients</li>
+            <li><i data-sw="gold"></i>Reserved for patients who cannot pay</li>
+            <li><i data-sw="grey"></i>Free places</li>
+          </ul>
+          <div class="pb-chart sm" data-draw="places" data-source="compare" role="img" aria-label="Use of the 600 yearly places for each option"></div>
+          <p class="pb-note">Above 500 paying patients, extra demand is turned away.</p>
+        </div>
+      </div></section>
+    <section class="pb-page pb-p-single" id="assumptions" role="tabpanel" hidden><div class="pb-row2 pb-row-ledger"><div class="pb-panel">
       <h2>Assumptions and sources</h2>
       <div class="pb-body">
-        <table class="pb-table text" id="table-ledger" data-source="ledger" data-row-key="assumption">
+        <div class="pb-tfill"><table class="pb-table text" id="table-ledger" data-source="ledger" data-row-key="assumption">
           <thead><tr><th data-field="assumption">Assumption</th><th data-field="value">Value</th><th data-field="case_gives">Case evidence</th><th data-field="where">Page</th><th data-field="we_added">Added assumption</th></tr></thead>
           <tbody data-draw="ledger"></tbody>
-        </table>
+        </table></div>
       </div>
-    </div><div class="pb-panel" id="method"><h2>Method</h2><div class="pb-body"><p class="pb-note pb-method">CABG profit = (price − $2,000) × paying patients − 30% of fixed costs ($10M staff, $4M overhead, $6.56M capital: $70M at 8% over 25 years). Paying patients = demand, up to 600 places minus reserved places. Demand calibrated on the plan: about 200 cases (year 1) and 450 (year 5) at around $50,000 (p. 10). Segment scenario: 150 Caymanian, 200 US, 100 Caribbean insured patients, falling linearly to zero at $102,000, $76,000 and $80,000. Low-sensitivity scenario: elasticity 0.8 at $50,000. Values recomputed in the browser with the formulas of the Python model in Sources. 2014 dollars.</p></div></div></div></section>
-    </div>
+    </div><div class="pb-panel" id="method"><h2>Method</h2><div class="pb-body">
+  <dl class="pb-def">
+    <div><dt>CABG profit</dt><dd>(price − $2,000 variable cost) × paying patients − 30% of fixed costs</dd></div>
+    <div><dt>Fixed costs</dt><dd>$10.0M staff + $4.0M overhead + $6.56M capital a year ($70M at 8% over 25 years)</dd></div>
+    <div><dt>Paying patients</dt><dd>Demand at the price, up to 600 places minus reserved places</dd></div>
+    <div><dt>Calibration</dt><dd>About 200 cases in year 1 and 450 in year 5 at around $50,000 (p. 10)</dd></div>
+    <div><dt>Segment demand</dt><dd>150 Caymanian, 200 US, 100 Caribbean insured patients, falling to zero at $102k, $76k and $80k</dd></div>
+    <div><dt>Low-sensitivity demand</dt><dd>Elasticity 0.8 at $50,000</dd></div>
+    <div><dt>Units</dt><dd>2014 dollars, no inflation; recomputed in the browser with the formulas of the Python model</dd></div>
+  </dl>
+</div></div></div></section>
   </div>
 </div>
 
@@ -769,7 +798,7 @@ dash.draw('curve', (el) => {
   const prm = dash.params(), scen = prm.scen === 'low' ? 'low' : 'seg';
   const pr = window.PB.row('kpis', 'price'), prop = pr ? pr.proposal : 45000, sel = pr ? pr.selection : 45000;
   const rows = c.data.map((r) => ({ p: +r.price, s: +r.profit_seg, l: +r.profit_low, n: +r.paying }));
-  const W = Math.max(280, el.clientWidth || 600), H = Math.max(120, Math.min(520, el.clientHeight || 290)), m = { t: 34, r: 14, b: 32, l: 52 };
+  const W = Math.max(280, el.clientWidth || 600), H = Math.max(120, Math.min(560, el.clientHeight || 290)), m = { t: 34, r: 14, b: 32, l: 52 };
   const x = d3.scaleLinear().domain(d3.extent(rows, (r) => r.p)).range([m.l, W - m.r]);
   const y = d3.scaleLinear().domain([Math.min(0, d3.min(rows, (r) => Math.min(r.s, r.l))), d3.max(rows, (r) => Math.max(r.s, r.l)) * 1.08]).nice().range([H - m.b, m.t]);
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Year-5 profit by price');
@@ -827,7 +856,7 @@ dash.draw('bridge', (el) => {
     { lab: 'Fixed cost (30%)', a: rev.selection - vc.selection - fx.selection, b: rev.selection - vc.selection, pa: pf.proposal, pb: rev.proposal - vc.proposal, col: C.bad },
     { lab: 'Profit', a: 0, b: pf.selection, pa: 0, pb: pf.proposal, col: C.teal },
   ];
-  const W = Math.max(240, el.clientWidth || 360), H = Math.max(120, Math.min(480, el.clientHeight || 260)), m = { t: 22, r: 8, b: 30, l: 44 };
+  const W = Math.max(240, el.clientWidth || 360), H = Math.max(120, Math.min(520, el.clientHeight || 260)), m = { t: 22, r: 8, b: 30, l: 44 };
   const x = d3.scaleBand().domain(steps.map((s) => s.lab)).range([m.l, W - m.r]).padding(0.3);
   const y = d3.scaleLinear().domain([Math.min(0, d3.min(steps, (s) => Math.min(s.a, s.b))), d3.max(steps, (s) => Math.max(s.b, s.pb)) * 1.12]).nice().range([H - m.b, m.t]);
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Revenue to profit bridge');
@@ -875,7 +904,7 @@ dash.draw('heat', (el) => {
   d3.select(el).selectAll('tr').data(prices).join('tr').each(function (p) {
     const cells = [{ t: (p === 45000 ? '◆ ' : '') + '$' + d3.format(',.1~f')(p / 1000) + 'k', s: null, c: '' }]
       .concat(vols.map((v) => { const r = d.data.find((q) => q.price === p && q.volume === v); return { t: r ? d3.format(',.1f')(r.profit / 1e6) : '—', s: r ? col(r.profit) : null, c: p === 45000 && v === 450 ? 'h-prop' : '' }; }));
-    d3.select(this).selectAll('td').data(cells).join('td').attr('class', (q) => q.c).style('background', (q) => q.s).style('font-weight', p === 45000 ? 700 : 600).text((q) => q.t);
+    d3.select(this).selectAll('td').data(cells).join('td').attr('class', (q) => q.c).style('background', (q) => q.s).style('font-weight', p === 45000 ? 600 : 500).text((q) => q.t);
   });
 });
 
@@ -905,7 +934,7 @@ dash.draw('drivers', (el) => {
   el.replaceChildren();
   const rows = d.data.map((r) => ({ name: r.assumption, rng: r.range, pl: +r.price_low, ph: +r.price_high, pb: +r.price_base, fl: +r.profit_low, fh: +r.profit_high, fb: +r.profit_base }))
     .sort((a, b) => (b.ph - b.pl) - (a.ph - a.pl) || (b.fh - b.fl) - (a.fh - a.fl));
-  const W = Math.max(300, el.clientWidth || 700), narrow = W < 680, top = 24, avail = el.clientHeight || 0, rowH = narrow ? 64 : (avail > 0 ? Math.max(20, Math.min(34, (avail - top - 10) / rows.length)) : 32), labW = narrow ? 0 : Math.min(300, W * 0.32);
+  const W = Math.max(300, el.clientWidth || 700), narrow = W < 680, top = 28, avail = el.clientHeight || 0, rowH = narrow ? 64 : (avail > 0 ? Math.max(20, Math.min(52, (avail - top - 8) / rows.length)) : 32), labW = narrow ? 0 : Math.min(320, W * 0.32);
   const panelW = narrow ? W - 16 : (W - labW - 36) / 2, H = top + rows.length * rowH + 10;
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Effect of each assumption on price and profit');
   const xp = d3.scaleLinear().domain([d3.min(rows, (r) => r.pl) - 1000, d3.max(rows, (r) => r.ph) + 1000]).range([0, panelW - 56]);
@@ -915,14 +944,14 @@ dash.draw('drivers', (el) => {
   rows.forEach((r, i) => {
     const yb = top + i * rowH, gg = svg.append('g');
     if (narrow) gg.append('text').attr('x', 8).attr('y', yb + 4).attr('class', 't-ink').text(r.name + ' (' + r.rng + ')');
-    else gg.append('text').attr('x', labW - 4).attr('y', yb + 14).attr('text-anchor', 'end').text(r.name + ' (' + r.rng + ')');
+    else gg.append('text').attr('x', labW - 8).attr('y', yb + rowH / 2 + 4).attr('text-anchor', 'end').text(r.name + ' (' + r.rng + ')');
     const bar = (ox, xs, lo, hi, base, col, fmt, yy) => {
       gg.append('rect').attr('x', ox + xs(lo)).attr('y', yy).attr('width', Math.max(2, xs(hi) - xs(lo))).attr('height', 14).attr('rx', 2).style('fill', hi - lo > 1e-6 ? col : C.grey);
       gg.append('line').attr('x1', ox + xs(base)).attr('x2', ox + xs(base)).attr('y1', yy - 3).attr('y2', yy + 17).style('stroke', C.gold).style('stroke-width', 2);
       gg.append('text').attr('x', ox + xs(hi) + 6).attr('y', yy + 11).text(hi - lo > 1e-6 ? fmt(lo) + '–' + fmt(hi) : 'no effect');
     };
-    bar(ox1, xp, r.pl, r.ph, r.pb, C.navy, (v) => d3.format(',.1~f')(v / 1000), narrow ? yb + 10 : yb + 4);
-    bar(ox2, xf, r.fl, r.fh, r.fb, C.teal, (v) => d3.format(',.1f')(v / 1e6), narrow ? yb + 32 : yb + 4);
+    bar(ox1, xp, r.pl, r.ph, r.pb, C.navy, (v) => d3.format(',.1~f')(v / 1000), narrow ? yb + 10 : yb + (rowH - 14) / 2);
+    bar(ox2, xf, r.fl, r.fh, r.fb, C.teal, (v) => d3.format(',.1f')(v / 1e6), narrow ? yb + 32 : yb + (rowH - 14) / 2);
   });
 });
 
@@ -930,24 +959,24 @@ dash.draw('places', (el) => {
   const d = dash.data('compare'), C = window.PB.C;
   if (d.status !== 'ok' || !d.data || !d.data.length) { el.replaceChildren(); el.textContent = '—'; return; }
   el.replaceChildren();
-  const rows = d.data, W = Math.max(280, el.clientWidth || 600), narrow = W < 520, labW = narrow ? 110 : 190, avail = el.clientHeight || 0, rowH = avail > 0 ? Math.max(20, Math.min(34, (avail - 34) / rows.length)) : 34;
+  const rows = d.data, W = Math.max(280, el.clientWidth || 600), narrow = W < 520, labW = narrow ? 110 : 200, avail = el.clientHeight || 0, rowH = avail > 0 ? Math.max(20, Math.min(56, (avail - 32) / rows.length)) : 34, barH = Math.min(24, Math.round(rowH * 0.55));
   const H = 8 + rows.length * rowH + 24;
   const x = d3.scaleLinear().domain([0, 600]).range([labW, W - (narrow ? 50 : 110)]);
   const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Use of places by option');
   svg.append('g').attr('transform', `translate(0,${H - 22})`).call(d3.axisBottom(x).tickValues([0, 100, 200, 300, 400, 500, 600]).tickSizeOuter(0)).call((q) => q.select('.domain').style('stroke', C.grey));
   rows.forEach((r, i) => {
-    const y = 8 + i * rowH, isP = r.name === 'Recommended';
-    svg.append('text').attr('x', labW - 8).attr('y', y + 15).attr('text-anchor', 'end').attr('class', isP ? 't-gold' : r.name === 'Selected' ? 't-ink' : '')
+    const y = 8 + i * rowH + (rowH - barH) / 2 - 3, isP = r.name === 'Recommended';
+    svg.append('text').attr('x', labW - 8).attr('y', y + 3 + barH / 2 + 4).attr('text-anchor', 'end').attr('class', isP ? 't-gold' : r.name === 'Selected' ? 't-ink' : '')
       .text((isP ? '◆ ' : '') + (narrow ? '$' + d3.format(',.1~f')(r.price / 1000) + 'k' : r.name + ' · $' + d3.format(',.1~f')(r.price / 1000) + 'k'));
     let x0 = 0;
     [[r.paying, C.navy], [r.reserved, C.gold], [r.free, C.grey]].forEach(([v, col]) => {
       if (v <= 0) return;
-      svg.append('rect').attr('x', x(x0)).attr('y', y + 3).attr('width', Math.max(1, x(x0 + v) - x(x0))).attr('height', 18).style('fill', col);
-      if (x(x0 + v) - x(x0) > 28) svg.append('text').attr('x', x(x0) + 4).attr('y', y + 16).style('fill', col === C.navy ? '#FFFFFF' : C.ink).style('font-weight', 600).text(v);
+      svg.append('rect').attr('x', x(x0)).attr('y', y + 3).attr('width', Math.max(1, x(x0 + v) - x(x0))).attr('height', barH).style('fill', col);
+      if (x(x0 + v) - x(x0) > 28) svg.append('text').attr('x', x(x0) + 4).attr('y', y + 3 + barH / 2 + 4).style('fill', col === C.navy ? '#FFFFFF' : C.ink).style('font-weight', 600).text(v);
       x0 += v;
     });
-    if (isP) svg.append('rect').attr('x', x(0) - 2).attr('y', y + 1).attr('width', x(600) - x(0) + 4).attr('height', 22).style('fill', 'none').style('stroke', C.gold).style('stroke-width', 2);
-    if (r.turned_away > 0) svg.append('text').attr('x', x(600) + 6).attr('y', y + 16).style('fill', C.bad).style('font-weight', 600).text('+' + r.turned_away + (narrow ? '' : ' turned away'));
+    if (isP) svg.append('rect').attr('x', x(0) - 2).attr('y', y + 1).attr('width', x(600) - x(0) + 4).attr('height', barH + 4).style('fill', 'none').style('stroke', C.gold).style('stroke-width', 2);
+    if (r.turned_away > 0) svg.append('text').attr('x', x(600) + 6).attr('y', y + 3 + barH / 2 + 4).style('fill', C.bad).style('font-weight', 600).text('+' + r.turned_away + (narrow ? '' : ' turned away'));
   });
 });
 </script>
