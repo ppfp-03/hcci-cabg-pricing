@@ -302,6 +302,14 @@
 .pb-list-fill > li { padding: 8px 0; }
 .pb-list-fill > li + li { border-top: 1px solid var(--pb-line); }
 
+.pb-strip { display: flex; align-items: center; gap: 12px 24px; flex-wrap: wrap; background: var(--pb-panel); border: 1px solid var(--pb-line); border-radius: 4px; padding: 8px 16px; }
+.pb-strip-title { font-size: 12px; font-weight: 600; color: var(--pb-head); white-space: nowrap; }
+.pb-sl { display: flex; align-items: center; gap: 12px; flex: 1 1 220px; min-width: 200px; }
+.pb-sl-name { font-size: 12px; color: var(--pb-muted); white-space: nowrap; }
+.pb-sl .pb-track { flex: 1 1 auto; min-width: 100px; }
+.pb-sl .l-val { font-size: 12px; min-width: 7ch; }
+.pb-sl-btns { flex: none; }
+.pb-sl-btns .pb-btn { min-height: 28px; padding: 0 8px; }
 .pb-heat th { text-align: center; }
 .pb-heat th:first-child { text-align: left; }
 .pb-def { margin: 0; display: grid; gap: 12px; align-content: start; }
@@ -325,9 +333,9 @@
   .pb-pages { min-height: 0; height: 100%; }
   .pb-page { min-height: 0; height: 100%; gap: 12px; }
   .pb-p-overview { grid-template-rows: auto auto minmax(0, 1fr); }
-  .pb-p-comparison { grid-template-rows: auto minmax(0, 1fr); }
+  .pb-p-comparison { grid-template-rows: auto auto minmax(0, 1fr); }
   .pb-p-single { grid-template-rows: minmax(0, 1fr); }
-  .pb-p-mission { grid-template-rows: auto minmax(0, 1fr); }
+  .pb-p-mission { grid-template-rows: auto auto minmax(0, 1fr); }
   .pb-p-mission > .pb-row2 { height: auto; }
   .pb-row2, .pb-ov-main { min-height: 0; height: 100%; }
   .pb-panel { min-height: 0; overflow: hidden; }
@@ -439,12 +447,12 @@
         <div class="pb-body pb-lever-body">
           <div class="pb-lever" id="lever-price" data-lever="price">
             <div class="l-row"><span class="l-name">CABG price</span><span class="l-val" data-draw="lval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</span></div>
-            <div class="pb-track"><input type="range" id="pb-price" min="30000" max="70000" step="500" value="45000" aria-label="CABG price"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div>
+            <div class="pb-track"><input type="range" id="pb-price" data-ctl="price" min="30000" max="70000" step="500" value="45000" aria-label="CABG price"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div>
             <div class="l-state"><span class="l-on" data-on="price">◆ Recommended</span><span class="l-off" data-off="price" hidden="">Changed · recommendation at ◆</span></div>
           </div>
           <div class="pb-lever" id="lever-reserve" data-lever="reserve">
             <div class="l-row"><span class="l-name">Places reserved for patients who cannot pay</span><span class="l-val" data-draw="lval" data-metric="reserved" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=reserved">—</span></div>
-            <div class="pb-track"><input type="range" id="pb-reserve" min="0" max="150" step="10" value="100" aria-label="Reserved places"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div>
+            <div class="pb-track"><input type="range" id="pb-reserve" data-ctl="reserve" min="0" max="150" step="10" value="100" aria-label="Reserved places"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div>
             <div class="l-state"><span class="l-on" data-on="reserve">◆ Recommended</span><span class="l-off" data-off="reserve" hidden="">Changed · recommendation at ◆</span></div>
           </div>
           <div class="pb-btns" role="group" aria-label="Quick comparisons">
@@ -478,7 +486,7 @@
           <p class="pb-note">Selected year and scenario. Subsidized patients pay the variable cost: no margin.</p>
         </div>
       </div></div></section>
-    <section class="pb-page pb-p-comparison" id="comparison" role="tabpanel" hidden><div class="pb-panel" id="panel-compare">
+    <section class="pb-page pb-p-comparison" id="comparison" role="tabpanel" hidden><div class="pb-strip" role="group" aria-label="Pricing levers"><span class="pb-strip-title">Pricing levers</span><div class="pb-lever pb-sl" data-lever="price"><label class="pb-sl-name" for="pb-price-cmp">Price</label><div class="pb-track"><input type="range" id="pb-price-cmp" data-ctl="price" min="30000" max="70000" step="500" value="45000"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div><span class="l-val" data-draw="lval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</span></div><div class="pb-lever pb-sl" data-lever="reserve"><label class="pb-sl-name" for="pb-reserve-cmp">Reserved places</label><div class="pb-track"><input type="range" id="pb-reserve-cmp" data-ctl="reserve" min="0" max="150" step="10" value="100"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div><span class="l-val" data-draw="lval" data-metric="reserved" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=reserved">—</span></div><div class="pb-btns pb-sl-btns"><button type="button" class="pb-btn gold" data-preset="45000">Recommended</button><button type="button" class="pb-btn" data-preset="40000">$40k</button><button type="button" class="pb-btn" data-preset="50000">$50k</button><button type="button" class="pb-btn" data-preset="57500">$57.5k</button></div></div><div class="pb-panel" id="panel-compare">
         <h2>Scenario comparison</h2>
         <div class="pb-body">
           <table class="pb-table" id="table-compare" data-source="compare" data-row-key="name">
@@ -508,7 +516,7 @@
         <div class="pb-chart" style="min-height:420px" data-draw="drivers" data-source="drivers" role="img" aria-label="For each assumption, the range of the best price and of year-5 profit"></div>
       </div>
     </div></section>
-    <section class="pb-page pb-p-mission" id="mission" role="tabpanel" hidden><div class="pb-row2 pb-row-mission"><div class="pb-panel">
+    <section class="pb-page pb-p-mission" id="mission" role="tabpanel" hidden><div class="pb-strip" role="group" aria-label="Pricing levers"><span class="pb-strip-title">Pricing levers</span><div class="pb-lever pb-sl" data-lever="price"><label class="pb-sl-name" for="pb-price-mis">Price</label><div class="pb-track"><input type="range" id="pb-price-mis" data-ctl="price" min="30000" max="70000" step="500" value="45000"><span class="pb-mark" data-mark="price" data-min="30000" data-max="70000"></span></div><span class="l-val" data-draw="lval" data-metric="price" data-fmt="usd" data-source="kpis" data-field="selection" data-where="metric=price">—</span></div><div class="pb-lever pb-sl" data-lever="reserve"><label class="pb-sl-name" for="pb-reserve-mis">Reserved places</label><div class="pb-track"><input type="range" id="pb-reserve-mis" data-ctl="reserve" min="0" max="150" step="10" value="100"><span class="pb-mark" data-mark="reserve" data-min="0" data-max="150"></span></div><span class="l-val" data-draw="lval" data-metric="reserved" data-fmt="int" data-source="kpis" data-field="selection" data-where="metric=reserved">—</span></div><div class="pb-btns pb-sl-btns"><button type="button" class="pb-btn gold" data-preset="45000">Recommended</button><button type="button" class="pb-btn" data-preset="40000">$40k</button><button type="button" class="pb-btn" data-preset="50000">$50k</button><button type="button" class="pb-btn" data-preset="57500">$57.5k</button></div></div><div class="pb-row2 pb-row-mission"><div class="pb-panel">
         <h2>Trade-offs</h2>
         <div class="pb-body">
           <ul class="pb-list pb-list-fill">
@@ -667,8 +675,8 @@ window.PB = {
 // Leve, slicer, preset e schede: solo ascolto, valori, classi e hidden.
 const pbSet = (o) => dash.setParams(o);
 document.querySelectorAll('#verdict').forEach((el) => el.addEventListener('animationend', (e) => { if (e.animationName === 'pb-pulse') el.classList.remove('pb-pulse'); }));
-document.querySelectorAll('#pb-price').forEach((el) => el.addEventListener('input', () => pbSet({ price: Number(el.value) })));
-document.querySelectorAll('#pb-reserve').forEach((el) => el.addEventListener('input', () => pbSet({ reserve: Number(el.value) })));
+document.querySelectorAll('[data-ctl="price"]').forEach((el) => el.addEventListener('input', () => pbSet({ price: Number(el.value) })));
+document.querySelectorAll('[data-ctl="reserve"]').forEach((el) => el.addEventListener('input', () => pbSet({ reserve: Number(el.value) })));
 // Dropdown dei filtri: listbox accessibile, si apre e si chiude dal pulsante
 const ddClose = (dd, focusBtn) => {
   dd.classList.remove('is-open');
@@ -727,8 +735,8 @@ dash.onData(() => {
   const pp = k('price'), pr = k('reserved');
   const propPrice = pp ? pp.proposal : 45000, propRes = pr ? pr.proposal : 100;
   const offP = price !== propPrice, offR = reserve !== propRes;
-  document.querySelectorAll('#pb-price').forEach((el) => { if (document.activeElement !== el) el.value = price; });
-  document.querySelectorAll('#pb-reserve').forEach((el) => { if (document.activeElement !== el) el.value = reserve; });
+  document.querySelectorAll('[data-ctl="price"]').forEach((el) => { if (document.activeElement !== el) el.value = price; });
+  document.querySelectorAll('[data-ctl="reserve"]').forEach((el) => { if (document.activeElement !== el) el.value = reserve; });
   const ddCur = { scen: prm.scen === 'low' ? 'low' : 'seg', yr: String(Number(prm.yr ?? 5) === 1 ? 1 : 5) };
   document.querySelectorAll('.pb-dd').forEach((dd) => {
     const cur = ddCur[dd.dataset.dd];
